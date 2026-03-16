@@ -29,7 +29,9 @@ namespace PreguntadosUASLP
 
         private void Futbol_Click(object sender, EventArgs e)
         {
+            FormFutbol ventanaJuegoFutbol = new FormFutbol();
 
+            ventanaJuegoFutbol.Show();
         }
     }
 }

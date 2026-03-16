@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace PreguntadosUASLP
 {
-    public partial class Form2 : Form
+    public partial class FormFutbol : Form
     {
-        public Form2()
+        public FormFutbol()
         {
             InitializeComponent();
         }
