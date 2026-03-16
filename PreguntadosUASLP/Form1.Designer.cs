@@ -28,12 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            UASLP = new PictureBox();
+            Cine = new PictureBox();
+            Videojuegos = new PictureBox();
+            Futbol = new PictureBox();
+            Tecnologia = new PictureBox();
+            Redes_Sociales = new PictureBox();
+            Cultura_pop = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)UASLP).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Cine).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Videojuegos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Futbol).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Tecnologia).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Redes_Sociales).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Cultura_pop).BeginInit();
+            SuspendLayout();
+            // 
+            // UASLP
+            // 
+            UASLP.BackColor = Color.Transparent;
+            UASLP.BackgroundImage = Properties.Resources.opciones;
+            UASLP.BackgroundImageLayout = ImageLayout.Stretch;
+            UASLP.Location = new Point(114, 275);
+            UASLP.Name = "UASLP";
+            UASLP.Size = new Size(406, 69);
+            UASLP.TabIndex = 0;
+            UASLP.TabStop = false;
+            UASLP.Tag = "UASLP";
+            UASLP.Paint += Cultura_pop_Paint;
+            // 
+            // Cine
+            // 
+            Cine.BackColor = Color.Transparent;
+            Cine.BackgroundImage = Properties.Resources.opciones;
+            Cine.BackgroundImageLayout = ImageLayout.Stretch;
+            Cine.Location = new Point(114, 350);
+            Cine.Name = "Cine";
+            Cine.Size = new Size(406, 69);
+            Cine.TabIndex = 1;
+            Cine.TabStop = false;
+            Cine.Tag = "Cine";
+            Cine.Paint += Cultura_pop_Paint;
+            // 
+            // Videojuegos
+            // 
+            Videojuegos.BackColor = Color.Transparent;
+            Videojuegos.BackgroundImage = Properties.Resources.opciones;
+            Videojuegos.BackgroundImageLayout = ImageLayout.Stretch;
+            Videojuegos.Location = new Point(114, 425);
+            Videojuegos.Name = "Videojuegos";
+            Videojuegos.Size = new Size(406, 69);
+            Videojuegos.TabIndex = 2;
+            Videojuegos.TabStop = false;
+            Videojuegos.Tag = "Videojuegos";
+            Videojuegos.Paint += Cultura_pop_Paint;
+            // 
+            // Futbol
+            // 
+            Futbol.BackColor = Color.Transparent;
+            Futbol.BackgroundImage = Properties.Resources.opciones;
+            Futbol.BackgroundImageLayout = ImageLayout.Stretch;
+            Futbol.Location = new Point(526, 425);
+            Futbol.Name = "Futbol";
+            Futbol.Size = new Size(406, 69);
+            Futbol.TabIndex = 5;
+            Futbol.TabStop = false;
+            Futbol.Tag = "Futbol";
+            Futbol.Paint += Cultura_pop_Paint;
+            // 
+            // Tecnologia
+            // 
+            Tecnologia.BackColor = Color.Transparent;
+            Tecnologia.BackgroundImage = Properties.Resources.opciones;
+            Tecnologia.BackgroundImageLayout = ImageLayout.Stretch;
+            Tecnologia.Location = new Point(526, 350);
+            Tecnologia.Name = "Tecnologia";
+            Tecnologia.Size = new Size(406, 69);
+            Tecnologia.TabIndex = 4;
+            Tecnologia.TabStop = false;
+            Tecnologia.Tag = "Tecnología";
+            Tecnologia.Paint += Cultura_pop_Paint;
+            // 
+            // Redes_Sociales
+            // 
+            Redes_Sociales.BackColor = Color.Transparent;
+            Redes_Sociales.BackgroundImage = Properties.Resources.opciones;
+            Redes_Sociales.BackgroundImageLayout = ImageLayout.Stretch;
+            Redes_Sociales.Location = new Point(526, 272);
+            Redes_Sociales.Name = "Redes_Sociales";
+            Redes_Sociales.Size = new Size(406, 69);
+            Redes_Sociales.TabIndex = 3;
+            Redes_Sociales.TabStop = false;
+            Redes_Sociales.Tag = "Redes sociales";
+            Redes_Sociales.Paint += Cultura_pop_Paint;
+            // 
+            // Cultura_pop
+            // 
+            Cultura_pop.BackColor = Color.Transparent;
+            Cultura_pop.BackgroundImage = Properties.Resources.opciones;
+            Cultura_pop.BackgroundImageLayout = ImageLayout.Stretch;
+            Cultura_pop.Location = new Point(322, 500);
+            Cultura_pop.Name = "Cultura_pop";
+            Cultura_pop.Size = new Size(406, 69);
+            Cultura_pop.TabIndex = 6;
+            Cultura_pop.TabStop = false;
+            Cultura_pop.Tag = "Cultura pop";
+            Cultura_pop.Paint += Cultura_pop_Paint;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = Properties.Resources.preguntados_uaslp;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1032, 581);
+            Controls.Add(Cultura_pop);
+            Controls.Add(Futbol);
+            Controls.Add(Tecnologia);
+            Controls.Add(Redes_Sociales);
+            Controls.Add(Videojuegos);
+            Controls.Add(Cine);
+            Controls.Add(UASLP);
+            Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)UASLP).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Cine).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Videojuegos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Futbol).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Tecnologia).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Redes_Sociales).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Cultura_pop).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox UASLP;
+        private PictureBox Cine;
+        private PictureBox Videojuegos;
+        private PictureBox Futbol;
+        private PictureBox Tecnologia;
+        private PictureBox Redes_Sociales;
+        private PictureBox Cultura_pop;
     }
 }
