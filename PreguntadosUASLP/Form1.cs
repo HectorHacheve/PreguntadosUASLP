@@ -31,7 +31,6 @@ namespace PreguntadosUASLP
         {
             FormFutbol ventanaJuego = new FormFutbol();
             ventanaJuego.ShowDialog();
-
         }
     }
 }
