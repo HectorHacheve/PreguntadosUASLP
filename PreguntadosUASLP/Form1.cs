@@ -30,7 +30,7 @@ namespace PreguntadosUASLP
         private void Futbol_Click(object sender, EventArgs e)
         {
             FormFutbol ventanaJuego = new FormFutbol();
-            ventanaJuego.Show();
+            ventanaJuego.ShowDialog();
 
         }
     }
