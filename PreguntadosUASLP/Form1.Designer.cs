@@ -94,6 +94,7 @@
             Futbol.TabIndex = 5;
             Futbol.TabStop = false;
             Futbol.Tag = "Futbol";
+            Futbol.Click += Futbol_Click;
             Futbol.Paint += Cultura_pop_Paint;
             // 
             // Tecnologia
