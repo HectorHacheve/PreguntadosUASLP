@@ -49,9 +49,10 @@
             UASLP.BackColor = Color.Transparent;
             UASLP.BackgroundImage = Properties.Resources.opciones;
             UASLP.BackgroundImageLayout = ImageLayout.Stretch;
-            UASLP.Location = new Point(114, 275);
+            UASLP.Location = new Point(127, 357);
+            UASLP.Margin = new Padding(3, 4, 3, 4);
             UASLP.Name = "UASLP";
-            UASLP.Size = new Size(406, 69);
+            UASLP.Size = new Size(464, 92);
             UASLP.TabIndex = 0;
             UASLP.TabStop = false;
             UASLP.Tag = "UASLP";
@@ -62,9 +63,10 @@
             Cine.BackColor = Color.Transparent;
             Cine.BackgroundImage = Properties.Resources.opciones;
             Cine.BackgroundImageLayout = ImageLayout.Stretch;
-            Cine.Location = new Point(114, 350);
+            Cine.Location = new Point(127, 457);
+            Cine.Margin = new Padding(3, 4, 3, 4);
             Cine.Name = "Cine";
-            Cine.Size = new Size(406, 69);
+            Cine.Size = new Size(464, 92);
             Cine.TabIndex = 1;
             Cine.TabStop = false;
             Cine.Tag = "Cine";
@@ -75,9 +77,10 @@
             Videojuegos.BackColor = Color.Transparent;
             Videojuegos.BackgroundImage = Properties.Resources.opciones;
             Videojuegos.BackgroundImageLayout = ImageLayout.Stretch;
-            Videojuegos.Location = new Point(114, 425);
+            Videojuegos.Location = new Point(127, 557);
+            Videojuegos.Margin = new Padding(3, 4, 3, 4);
             Videojuegos.Name = "Videojuegos";
-            Videojuegos.Size = new Size(406, 69);
+            Videojuegos.Size = new Size(464, 92);
             Videojuegos.TabIndex = 2;
             Videojuegos.TabStop = false;
             Videojuegos.Tag = "Videojuegos";
@@ -88,9 +91,10 @@
             Futbol.BackColor = Color.Transparent;
             Futbol.BackgroundImage = Properties.Resources.opciones;
             Futbol.BackgroundImageLayout = ImageLayout.Stretch;
-            Futbol.Location = new Point(526, 425);
+            Futbol.Location = new Point(598, 557);
+            Futbol.Margin = new Padding(3, 4, 3, 4);
             Futbol.Name = "Futbol";
-            Futbol.Size = new Size(406, 69);
+            Futbol.Size = new Size(464, 92);
             Futbol.TabIndex = 5;
             Futbol.TabStop = false;
             Futbol.Tag = "Futbol";
@@ -102,9 +106,10 @@
             Tecnologia.BackColor = Color.Transparent;
             Tecnologia.BackgroundImage = Properties.Resources.opciones;
             Tecnologia.BackgroundImageLayout = ImageLayout.Stretch;
-            Tecnologia.Location = new Point(526, 350);
+            Tecnologia.Location = new Point(598, 457);
+            Tecnologia.Margin = new Padding(3, 4, 3, 4);
             Tecnologia.Name = "Tecnologia";
-            Tecnologia.Size = new Size(406, 69);
+            Tecnologia.Size = new Size(464, 92);
             Tecnologia.TabIndex = 4;
             Tecnologia.TabStop = false;
             Tecnologia.Tag = "Tecnología";
@@ -115,9 +120,10 @@
             Redes_Sociales.BackColor = Color.Transparent;
             Redes_Sociales.BackgroundImage = Properties.Resources.opciones;
             Redes_Sociales.BackgroundImageLayout = ImageLayout.Stretch;
-            Redes_Sociales.Location = new Point(526, 272);
+            Redes_Sociales.Location = new Point(598, 353);
+            Redes_Sociales.Margin = new Padding(3, 4, 3, 4);
             Redes_Sociales.Name = "Redes_Sociales";
-            Redes_Sociales.Size = new Size(406, 69);
+            Redes_Sociales.Size = new Size(464, 92);
             Redes_Sociales.TabIndex = 3;
             Redes_Sociales.TabStop = false;
             Redes_Sociales.Tag = "Redes sociales";
@@ -128,9 +134,10 @@
             Cultura_pop.BackColor = Color.Transparent;
             Cultura_pop.BackgroundImage = Properties.Resources.opciones;
             Cultura_pop.BackgroundImageLayout = ImageLayout.Stretch;
-            Cultura_pop.Location = new Point(322, 500);
+            Cultura_pop.Location = new Point(365, 657);
+            Cultura_pop.Margin = new Padding(3, 4, 3, 4);
             Cultura_pop.Name = "Cultura_pop";
-            Cultura_pop.Size = new Size(406, 69);
+            Cultura_pop.Size = new Size(464, 92);
             Cultura_pop.TabIndex = 6;
             Cultura_pop.TabStop = false;
             Cultura_pop.Tag = "Cultura pop";
@@ -138,11 +145,12 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.preguntados_uaslp;
+            BackColor = Color.DarkSlateBlue;
+            BackgroundImage = Properties.Resources.preguntados_uaslp___Copy;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1032, 581);
+            ClientSize = new Size(1179, 775);
             Controls.Add(Cultura_pop);
             Controls.Add(Futbol);
             Controls.Add(Tecnologia);
@@ -150,8 +158,10 @@
             Controls.Add(Videojuegos);
             Controls.Add(Cine);
             Controls.Add(UASLP);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Preguntados - UASLP´s Version";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)UASLP).EndInit();
             ((System.ComponentModel.ISupportInitialize)Cine).EndInit();
             ((System.ComponentModel.ISupportInitialize)Videojuegos).EndInit();
