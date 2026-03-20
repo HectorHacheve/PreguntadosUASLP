@@ -49,7 +49,7 @@
             UASLP.BackColor = Color.Transparent;
             UASLP.BackgroundImage = Properties.Resources.opciones;
             UASLP.BackgroundImageLayout = ImageLayout.Stretch;
-            UASLP.Location = new Point(127, 357);
+            UASLP.Location = new Point(137, 321);
             UASLP.Margin = new Padding(3, 4, 3, 4);
             UASLP.Name = "UASLP";
             UASLP.Size = new Size(464, 92);
@@ -63,7 +63,7 @@
             Cine.BackColor = Color.Transparent;
             Cine.BackgroundImage = Properties.Resources.opciones;
             Cine.BackgroundImageLayout = ImageLayout.Stretch;
-            Cine.Location = new Point(127, 457);
+            Cine.Location = new Point(137, 421);
             Cine.Margin = new Padding(3, 4, 3, 4);
             Cine.Name = "Cine";
             Cine.Size = new Size(464, 92);
@@ -77,7 +77,7 @@
             Videojuegos.BackColor = Color.Transparent;
             Videojuegos.BackgroundImage = Properties.Resources.opciones;
             Videojuegos.BackgroundImageLayout = ImageLayout.Stretch;
-            Videojuegos.Location = new Point(127, 557);
+            Videojuegos.Location = new Point(137, 521);
             Videojuegos.Margin = new Padding(3, 4, 3, 4);
             Videojuegos.Name = "Videojuegos";
             Videojuegos.Size = new Size(464, 92);
@@ -91,7 +91,7 @@
             Futbol.BackColor = Color.Transparent;
             Futbol.BackgroundImage = Properties.Resources.opciones;
             Futbol.BackgroundImageLayout = ImageLayout.Stretch;
-            Futbol.Location = new Point(598, 557);
+            Futbol.Location = new Point(608, 521);
             Futbol.Margin = new Padding(3, 4, 3, 4);
             Futbol.Name = "Futbol";
             Futbol.Size = new Size(464, 92);
@@ -106,7 +106,7 @@
             Tecnologia.BackColor = Color.Transparent;
             Tecnologia.BackgroundImage = Properties.Resources.opciones;
             Tecnologia.BackgroundImageLayout = ImageLayout.Stretch;
-            Tecnologia.Location = new Point(598, 457);
+            Tecnologia.Location = new Point(608, 421);
             Tecnologia.Margin = new Padding(3, 4, 3, 4);
             Tecnologia.Name = "Tecnologia";
             Tecnologia.Size = new Size(464, 92);
@@ -120,7 +120,7 @@
             Redes_Sociales.BackColor = Color.Transparent;
             Redes_Sociales.BackgroundImage = Properties.Resources.opciones;
             Redes_Sociales.BackgroundImageLayout = ImageLayout.Stretch;
-            Redes_Sociales.Location = new Point(598, 353);
+            Redes_Sociales.Location = new Point(608, 317);
             Redes_Sociales.Margin = new Padding(3, 4, 3, 4);
             Redes_Sociales.Name = "Redes_Sociales";
             Redes_Sociales.Size = new Size(464, 92);
@@ -134,7 +134,7 @@
             Cultura_pop.BackColor = Color.Transparent;
             Cultura_pop.BackgroundImage = Properties.Resources.opciones;
             Cultura_pop.BackgroundImageLayout = ImageLayout.Stretch;
-            Cultura_pop.Location = new Point(365, 657);
+            Cultura_pop.Location = new Point(375, 621);
             Cultura_pop.Margin = new Padding(3, 4, 3, 4);
             Cultura_pop.Name = "Cultura_pop";
             Cultura_pop.Size = new Size(464, 92);
@@ -148,7 +148,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateBlue;
-            BackgroundImage = Properties.Resources.preguntados_uaslp___Copy;
+            BackgroundImage = Properties.Resources.preguntados_uaslp;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1179, 775);
             Controls.Add(Cultura_pop);
@@ -158,6 +158,7 @@
             Controls.Add(Videojuegos);
             Controls.Add(Cine);
             Controls.Add(UASLP);
+            DoubleBuffered = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Preguntados - UASLP´s Version";
