@@ -56,6 +56,7 @@
             UASLP.TabIndex = 0;
             UASLP.TabStop = false;
             UASLP.Tag = "UASLP";
+            UASLP.Click += UASLP_Click;
             UASLP.Paint += Cultura_pop_Paint;
             // 
             // Cine

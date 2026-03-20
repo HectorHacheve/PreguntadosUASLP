@@ -47,5 +47,10 @@ namespace PreguntadosUASLP
         {
 
         }
+
+        private void UASLP_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
