@@ -160,6 +160,7 @@
             Controls.Add(Cine);
             Controls.Add(UASLP);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Preguntados - UASLP´s Version";

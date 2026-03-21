@@ -63,6 +63,16 @@ namespace PreguntadosUASLP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoMorado {
+            get {
+                object obj = ResourceManager.GetObject("fondoMorado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imagenes {
             get {
                 object obj = ResourceManager.GetObject("imagenes", resourceCulture);

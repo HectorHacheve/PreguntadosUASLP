@@ -10,12 +10,24 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        public FormJuego()
+        public string categoria;
+        public FormJuego(string categoriaRecibida) // es para recibir cat. selec. en el Form1
         {
             InitializeComponent();
+            categoria = categoriaRecibida;
         }
 
         private void FormJuego_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_pregunta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
