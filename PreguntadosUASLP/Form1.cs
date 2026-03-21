@@ -7,6 +7,7 @@ namespace PreguntadosUASLP
             InitializeComponent();
         }
 
+
         private void Cultura_pop_Paint(object sender, PaintEventArgs e)
         {
             PictureBox botonActual = (PictureBox)sender;
@@ -50,7 +51,8 @@ namespace PreguntadosUASLP
 
         private void UASLP_Click(object sender, EventArgs e)
         {
-
+            FormJuego juego = new FormJuego("UASLP");
+            juego.ShowDialog();
         }
     }
 }
