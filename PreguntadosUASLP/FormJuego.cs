@@ -9,6 +9,7 @@ namespace PreguntadosUASLP
     {
         string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Tu_Contraseña;";
         int categoriaId;
+        string? categoria;
         int idPreguntaActual;
         int respuestaCorrectaId;
         string? respuestaCorrectaTexto;
@@ -34,6 +35,7 @@ namespace PreguntadosUASLP
             label_placeholder1.Text = ObtenerNombreCategoria();
             label_placeholder3.Text = "Puntaje: 0";
             label_placeholder4.Text = "Pregunta 1/5";
+            ImagenCategoria();
         }
 
         private string ObtenerNombreCategoria()
@@ -47,12 +49,31 @@ namespace PreguntadosUASLP
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@id", categoriaId);
                     object resultado = cmd.ExecuteScalar();
-                    return resultado != null ? resultado.ToString() : "Sin categoría";
+                    categoria = resultado != null ? resultado.ToString() : "Sin categoría";
+                    return categoria;
                 }
                 catch (Exception)
                 {
                     return "Error";
                 }
+            }
+        }
+
+        private void ImagenCategoria()
+        {
+            if (categoria == "UASLP")
+            {
+                pictureBox_cat1.Image = Properties.Resources.uni;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.certificado;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else if (categoria == "Redes Sociales")
+            {
+                pictureBox_cat1.Image = Properties.Resources.mensajes;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.celular;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
 
