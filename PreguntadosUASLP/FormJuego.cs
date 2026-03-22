@@ -29,9 +29,16 @@ namespace PreguntadosUASLP
             switch (categoria)
             {
                 case "UASLP":
-                    pictureBox_cat1.Image = Properties.Resources.certificado; 
+                    pictureBox_cat1.Image = Properties.Resources.uni; 
                     pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox_cat2.Image = Properties.Resources.uni;
+                    pictureBox_cat2.Image = Properties.Resources.certificado;
+                    pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+                    break;
+
+                case "Redes Sociales":
+                    pictureBox_cat1.Image = Properties.Resources.mensajes;
+                    pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox_cat2.Image = Properties.Resources.celular;
                     pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
                     break;
             }

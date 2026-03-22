@@ -128,6 +128,7 @@
             Redes_Sociales.TabIndex = 3;
             Redes_Sociales.TabStop = false;
             Redes_Sociales.Tag = "Redes sociales";
+            Redes_Sociales.Click += Redes_Sociales_Click;
             Redes_Sociales.Paint += Cultura_pop_Paint;
             // 
             // Cultura_pop

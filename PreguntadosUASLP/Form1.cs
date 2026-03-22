@@ -54,5 +54,11 @@ namespace PreguntadosUASLP
             FormJuego juego = new FormJuego("UASLP");
             juego.ShowDialog();
         }
+
+        private void Redes_Sociales_Click(object sender, EventArgs e)
+        {
+            FormJuego juego = new FormJuego("Redes Sociales");
+            juego.ShowDialog();
+        }
     }
 }
