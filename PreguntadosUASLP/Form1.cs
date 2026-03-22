@@ -1,3 +1,7 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace PreguntadosUASLP
 {
     public partial class Form1 : Form
@@ -7,18 +11,14 @@ namespace PreguntadosUASLP
             InitializeComponent();
         }
 
-
         private void Cultura_pop_Paint(object sender, PaintEventArgs e)
         {
             PictureBox botonActual = (PictureBox)sender;
-
-
             string textoBoton = "";
             if (botonActual.Tag != null)
             {
                 textoBoton = botonActual.Tag.ToString();
             }
-
 
             Font miFuente = new Font("Arial", 14, FontStyle.Bold);
             StringFormat formatoCentrado = new StringFormat();
@@ -30,8 +30,8 @@ namespace PreguntadosUASLP
 
         private void Futbol_Click(object sender, EventArgs e)
         {
-            FormFutbol ventanaJuego = new FormFutbol();
-            ventanaJuego.ShowDialog();
+            FormJuego juego = new FormJuego(6);
+            juego.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,17 +41,25 @@ namespace PreguntadosUASLP
 
         private void Cultura_pop_Click(object sender, EventArgs e)
         {
-
+            FormJuego juego = new FormJuego(7);
+            juego.ShowDialog();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Cine_Click(object sender, EventArgs e)
         {
+            FormJuego juego = new FormJuego(3);
+            juego.ShowDialog();
+        }
 
+        private void Tecnologia_Click(object sender, EventArgs e)
+        {
+            FormJuego juego = new FormJuego(4);
+            juego.ShowDialog();
         }
 
         private void UASLP_Click(object sender, EventArgs e)
         {
-            FormJuego juego = new FormJuego("UASLP");
+            FormJuego juego = new FormJuego(1);
             juego.ShowDialog();
         }
     }

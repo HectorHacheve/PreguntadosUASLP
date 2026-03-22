@@ -2,15 +2,8 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,12 +13,6 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             UASLP = new PictureBox();
@@ -71,6 +58,7 @@
             Cine.TabIndex = 1;
             Cine.TabStop = false;
             Cine.Tag = "Cine";
+            Cine.Click += Cine_Click;
             Cine.Paint += Cultura_pop_Paint;
             // 
             // Videojuegos
@@ -114,6 +102,7 @@
             Tecnologia.TabIndex = 4;
             Tecnologia.TabStop = false;
             Tecnologia.Tag = "Tecnología";
+            Tecnologia.Click += Tecnologia_Click;
             Tecnologia.Paint += Cultura_pop_Paint;
             // 
             // Redes_Sociales
@@ -142,6 +131,7 @@
             Cultura_pop.TabIndex = 6;
             Cultura_pop.TabStop = false;
             Cultura_pop.Tag = "Cultura pop";
+            Cultura_pop.Click += Cultura_pop_Click;
             Cultura_pop.Paint += Cultura_pop_Paint;
             // 
             // Form1
@@ -174,8 +164,6 @@
             ((System.ComponentModel.ISupportInitialize)Cultura_pop).EndInit();
             ResumeLayout(false);
         }
-
-        #endregion
 
         private PictureBox UASLP;
         private PictureBox Cine;
