@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -7,7 +8,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Tu_Contraseña;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=irazema05;";
         int categoriaId;
         string? categoria;
         int idPreguntaActual;
@@ -27,6 +28,11 @@ namespace PreguntadosUASLP
             label02.Click += label02_Click;
             label03.Click += label03_Click;
             label04.Click += label04_Click;
+
+            btn_audio1.Click += btn_audio_Click;
+            btn_audio2.Click += btn_audio_Click;
+            btn_audio3.Click += btn_audio_Click;
+            btn_audio4.Click += btn_audio_Click;
 
             label_pregunta.AutoSize = false;
             label_pregunta.Size = new System.Drawing.Size(901, 108);
@@ -59,9 +65,9 @@ namespace PreguntadosUASLP
                     string query = "SELECT nombre FROM categorias WHERE id_categoria = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@id", categoriaId);
-                    object resultado = cmd.ExecuteScalar();
+                    object? resultado = cmd.ExecuteScalar();
                     categoria = resultado != null ? resultado.ToString() : "Sin categoría";
-                    return categoria;
+                    return categoria ?? "Sin categoría";
                 }
                 catch (Exception)
                 {
@@ -96,7 +102,8 @@ namespace PreguntadosUASLP
                 string query = "SELECT COUNT(*) FROM preguntas WHERE id_categoria = @cat";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@cat", categoriaId);
-                return Convert.ToInt32(cmd.ExecuteScalar());
+                object? resultado = cmd.ExecuteScalar();
+                return resultado != null ? Convert.ToInt32(resultado) : 0;
             }
         }
 
@@ -151,12 +158,12 @@ namespace PreguntadosUASLP
                         idPreguntaActual = Convert.ToInt32(reader["id_pregunta"]);
                         preguntasUsadas.Add(idPreguntaActual);
 
-                        label_pregunta.Text = reader["pregunta"].ToString();
+                        label_pregunta.Text = reader["pregunta"] != null ? reader["pregunta"].ToString() : "";
                         string tipoPregunta = reader["tipo"] != null ? reader["tipo"].ToString() : "texto";
 
                         reader.Close();
 
-                        CargarRespuestas(conn);
+                        CargarRespuestas(conn, tipoPregunta);
                         MostrarTipoPregunta(tipoPregunta);
                         ActualizarNumeroPregunta();
                     }
@@ -173,7 +180,7 @@ namespace PreguntadosUASLP
             }
         }
 
-        private void CargarRespuestas(MySqlConnection conn)
+        private void CargarRespuestas(MySqlConnection conn, string tipoPregunta)
         {
             try
             {
@@ -188,12 +195,12 @@ namespace PreguntadosUASLP
                 while (reader.Read())
                 {
                     string respuesta = reader["respuesta"] != null ? reader["respuesta"].ToString() : "";
-                    respuestas.Add(respuesta);
+                    respuestas.Add(respuesta ?? "");
 
                     if (Convert.ToBoolean(reader["es_correcta"]))
                     {
                         respuestaCorrectaId = Convert.ToInt32(reader["id_respuesta"]);
-                        respuestaCorrectaTexto = respuesta;
+                        respuestaCorrectaTexto = respuesta ?? "";
                     }
                 }
 
@@ -201,31 +208,84 @@ namespace PreguntadosUASLP
 
                 if (respuestas.Count >= 4)
                 {
-                    label01.Text = respuestas[0];
-                    label02.Text = respuestas[1];
-                    label03.Text = respuestas[2];
-                    label04.Text = respuestas[3];
+                    if (tipoPregunta == "imagen")
+                    {
+                        pictureBox_op1.Click -= pictureBox_Click;
+                        pictureBox_op2.Click -= pictureBox_Click;
+                        pictureBox_op3.Click -= pictureBox_Click;
+                        pictureBox_op4.Click -= pictureBox_Click;
 
-                    label01.AutoSize = false;
-                    label01.Size = new System.Drawing.Size(351, 141);
-                    label01.TextAlign = ContentAlignment.MiddleCenter;
+                        CargarImagenRespuesta(pictureBox_op1, respuestas[0]);
+                        CargarImagenRespuesta(pictureBox_op2, respuestas[1]);
+                        CargarImagenRespuesta(pictureBox_op3, respuestas[2]);
+                        CargarImagenRespuesta(pictureBox_op4, respuestas[3]);
 
-                    label02.AutoSize = false;
-                    label02.Size = new System.Drawing.Size(351, 141);
-                    label02.TextAlign = ContentAlignment.MiddleCenter;
+                        pictureBox_op1.Tag = respuestas[0];
+                        pictureBox_op2.Tag = respuestas[1];
+                        pictureBox_op3.Tag = respuestas[2];
+                        pictureBox_op4.Tag = respuestas[3];
 
-                    label03.AutoSize = false;
-                    label03.Size = new System.Drawing.Size(351, 141);
-                    label03.TextAlign = ContentAlignment.MiddleCenter;
+                        pictureBox_op1.Click += pictureBox_Click;
+                        pictureBox_op2.Click += pictureBox_Click;
+                        pictureBox_op3.Click += pictureBox_Click;
+                        pictureBox_op4.Click += pictureBox_Click;
+                    }
+                    else if (tipoPregunta == "texto")
+                    {
+                        label01.Text = respuestas[0];
+                        label02.Text = respuestas[1];
+                        label03.Text = respuestas[2];
+                        label04.Text = respuestas[3];
 
-                    label04.AutoSize = false;
-                    label04.Size = new System.Drawing.Size(351, 141);
-                    label04.TextAlign = ContentAlignment.MiddleCenter;
+                        label01.AutoSize = false;
+                        label01.Size = new System.Drawing.Size(351, 141);
+                        label01.TextAlign = ContentAlignment.MiddleCenter;
+
+                        label02.AutoSize = false;
+                        label02.Size = new System.Drawing.Size(351, 141);
+                        label02.TextAlign = ContentAlignment.MiddleCenter;
+
+                        label03.AutoSize = false;
+                        label03.Size = new System.Drawing.Size(351, 141);
+                        label03.TextAlign = ContentAlignment.MiddleCenter;
+
+                        label04.AutoSize = false;
+                        label04.Size = new System.Drawing.Size(351, 141);
+                        label04.TextAlign = ContentAlignment.MiddleCenter;
+                    }
+                    else if (tipoPregunta == "audio")
+                    {
+                        btn_audio1.Tag = respuestas[0];
+                        btn_audio2.Tag = respuestas[1];
+                        btn_audio3.Tag = respuestas[2];
+                        btn_audio4.Tag = respuestas[3];
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error respuestas: " + ex.Message);
+            }
+        }
+
+        private void CargarImagenRespuesta(PictureBox pictureBox, string rutaImagen)
+        {
+            try
+            {
+                string rutaCompleta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaImagen);
+                if (File.Exists(rutaCompleta))
+                {
+                    pictureBox.Image = Image.FromFile(rutaCompleta);
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                else
+                {
+                    pictureBox.Image = null;
+                }
+            }
+            catch
+            {
+                pictureBox.Image = null;
             }
         }
 
@@ -286,22 +346,40 @@ namespace PreguntadosUASLP
 
         private void label01_Click(object? sender, EventArgs e)
         {
-            VerificarRespuestaSeleccionada(label01.Text);
+            VerificarRespuestaSeleccionada(label01.Text ?? "");
         }
 
         private void label02_Click(object? sender, EventArgs e)
         {
-            VerificarRespuestaSeleccionada(label02.Text);
+            VerificarRespuestaSeleccionada(label02.Text ?? "");
         }
 
         private void label03_Click(object? sender, EventArgs e)
         {
-            VerificarRespuestaSeleccionada(label03.Text);
+            VerificarRespuestaSeleccionada(label03.Text ?? "");
         }
 
         private void label04_Click(object? sender, EventArgs e)
         {
-            VerificarRespuestaSeleccionada(label04.Text);
+            VerificarRespuestaSeleccionada(label04.Text ?? "");
+        }
+
+        private void pictureBox_Click(object? sender, EventArgs e)
+        {
+            PictureBox? pictureBox = sender as PictureBox;
+            if (pictureBox != null && pictureBox.Tag != null)
+            {
+                VerificarRespuestaSeleccionada(pictureBox.Tag.ToString() ?? "");
+            }
+        }
+
+        private void btn_audio_Click(object? sender, EventArgs e)
+        {
+            Button? button = sender as Button;
+            if (button != null && button.Tag != null)
+            {
+                VerificarRespuestaSeleccionada(button.Tag.ToString() ?? "");
+            }
         }
     }
 }

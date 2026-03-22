@@ -65,7 +65,13 @@ namespace PreguntadosUASLP
 
         private void Redes_Sociales_Click(object sender, EventArgs e)
         {
-            FormJuego juego = new FormJuego("Redes Sociales");
+            FormJuego juego = new FormJuego(2);
+            juego.ShowDialog();
+        }
+
+        private void Videojuegos_Click(object sender, EventArgs e)
+        {
+            FormJuego juego = new FormJuego(5);
             juego.ShowDialog();
         }
     }

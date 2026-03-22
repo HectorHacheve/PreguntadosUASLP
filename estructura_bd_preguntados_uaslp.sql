@@ -1,5 +1,3 @@
-CREATE DATABASE preguntados_uaslp;
-
 USE preguntados_uaslp;
 
 CREATE TABLE categorias (
@@ -18,7 +16,6 @@ INSERT INTO categorias (nombre) VALUES
 
 SELECT * FROM categorias;
 
-
 CREATE TABLE preguntas (
     id_pregunta INT PRIMARY KEY,
     id_categoria INT NOT NULL,
@@ -29,11 +26,6 @@ CREATE TABLE preguntas (
     REFERENCES categorias(id_categoria)
 );
 
-/*
-Ejemplo de insertar
-INSERT INTO preguntas VALUES
-(201,3,'¿Quién dirigió Titanic?','texto'/'audio'/'imagen');
-*/
 SELECT * FROM preguntas;
 
 CREATE TABLE respuestas (
@@ -46,22 +38,9 @@ CREATE TABLE respuestas (
     REFERENCES preguntas(id_pregunta)
 );
 
-/*
-Ejemplo de insertar
-en caso del tipo de respuesta se le pone el texto o la ruta,
-ya dependiendo de lo que sea el tipo se leera desde el campo tipo de pregunta 
-en la tabla de pregunta.
-INSERT INTO respuestas VALUES
-(2011,201,'James Cameron',TRUE),
-(2012,201,'Steven Spielberg',FALSE),
-(2013,201,'Christopher Nolan',FALSE),
-(2014,201,'Ridley Scott',FALSE);
-*/
 SELECT * FROM respuestas;
 
--- Agregue preguntas y respuestas de las categorías cine y tecnología
-
--- Cine:
+-- Preguntas Cine texto
 INSERT INTO preguntas VALUES
 (301,3,'¿Qué actor interpretó a Jack Dawson en Titanic (1997)?','texto'),
 (302,3,'¿Cómo se llama el parque de dinosaurios en la película de 1993 de Spielberg?','texto'),
@@ -89,7 +68,29 @@ INSERT INTO respuestas VALUES
 (3043,304,'Illumination Entertainment',FALSE),
 (3044,304,'Blue Sky Studios',FALSE);
 
--- Tecnologia:
+-- Preguntas Cine imagenes
+INSERT INTO preguntas VALUES
+(305,3,'¿Cuál de estos personajes es de una película de Studio Ghibli?','imagen'),
+(306,3,'¿Cuál de estas estatuillas es el Premio Oscar (Academy Award)?','imagen'),
+(307,3,'¿Qué personaje pertenece a la película "Fantástico Sr. Fox"?','imagen');
+
+INSERT INTO respuestas VALUES
+(3051,305,'imagenes/Gibby.jpg',FALSE),
+(3052,305,'imagenes/Shizuku_Tsukishima.jpg',TRUE),
+(3053,305,'imagenes/Nyanko-sensei.jpg',FALSE),
+(3054,305,'imagenes/Suzu.jpg',FALSE),
+
+(3061,306,'imagenes/Palma_de_Oro.jpg',FALSE),
+(3062,306,'imagenes/Globo_de_Oro.jpg',FALSE),
+(3063,306,'imagenes/Premio_Oscar.jpg',TRUE),
+(3064,306,'imagenes/Oso_de_Oro.jpg',FALSE),
+
+(3071,307,'imagenes/Ash.jpg',TRUE),
+(3072,307,'imagenes/Miguel.jpg',FALSE),
+(3073,307,'imagenes/Coraline.jpg',FALSE),
+(3074,307,'imagenes/Violet.jpg',FALSE);
+
+-- Preguntas Tecnologia
 INSERT INTO preguntas VALUES
 (401,4,'¿Qué compañía fundaron Bill Gates y Paul Allen en 1975?','texto'),
 (402,4,'¿Qué sistema operativo usa un robot verde como logo?','texto'),
@@ -117,7 +118,6 @@ INSERT INTO respuestas VALUES
 (4043,404,'Nokia',TRUE),
 (4044,404,'Sony Ericsson',FALSE);
 
-
 CREATE TABLE partidas (
     id_partida INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATETIME NOT NULL,
@@ -128,12 +128,6 @@ CREATE TABLE partidas (
     FOREIGN KEY (id_categoria)
     REFERENCES categorias(id_categoria)
 );
-
-/*
-Ejemplo
-INSERT INTO partidas (fecha, id_categoria, preguntas_correctas, preguntas_incorrectas)
-VALUES (NOW(), 3, 7, 3);
-*/
 
 SELECT * FROM partidas;
 
@@ -149,9 +143,3 @@ CREATE TABLE respuestas_partida (
     FOREIGN KEY (id_pregunta)
     REFERENCES preguntas(id_pregunta)
 );
-
-/*
-Ejemplo de como seria el into
-INSERT INTO respuestas_partida (id_partida, id_pregunta, correcta)
-VALUES (3, 201, TRUE/FALSE);
-*/
