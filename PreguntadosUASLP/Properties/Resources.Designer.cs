@@ -63,6 +63,26 @@ namespace PreguntadosUASLP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap celular {
+            get {
+                object obj = ResourceManager.GetObject("celular", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap certificado {
+            get {
+                object obj = ResourceManager.GetObject("certificado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fondoMorado {
             get {
                 object obj = ResourceManager.GetObject("fondoMorado", resourceCulture);
@@ -76,6 +96,16 @@ namespace PreguntadosUASLP.Properties {
         internal static System.Drawing.Bitmap imagenes {
             get {
                 object obj = ResourceManager.GetObject("imagenes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mensajes {
+            get {
+                object obj = ResourceManager.GetObject("mensajes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,16 @@ namespace PreguntadosUASLP.Properties {
         internal static System.Drawing.Bitmap preguntas1 {
             get {
                 object obj = ResourceManager.GetObject("preguntas1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap uni {
+            get {
+                object obj = ResourceManager.GetObject("uni", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

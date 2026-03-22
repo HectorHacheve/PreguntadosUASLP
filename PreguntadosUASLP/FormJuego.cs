@@ -15,6 +15,7 @@ namespace PreguntadosUASLP
         {
             InitializeComponent();
             categoria = categoriaRecibida;
+            ImagenCategoria();
         }
 
         private void FormJuego_Load(object sender, EventArgs e)
@@ -23,6 +24,18 @@ namespace PreguntadosUASLP
             MostrarTipoPregunta("audio"); // texto, image o audio (lo que quieres mostrar)
         }
 
+        private void ImagenCategoria() // para mostrar imagen según categoría :D
+        {
+            switch (categoria)
+            {
+                case "UASLP":
+                    pictureBox_cat1.Image = Properties.Resources.certificado; 
+                    pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox_cat2.Image = Properties.Resources.uni;
+                    pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+                    break;
+            }
+        }
         private void MostrarTipoPregunta(string tipo)
         {
             label01.Visible = false; // op. de texto
@@ -65,5 +78,6 @@ namespace PreguntadosUASLP
                     break;
             }
         }
+
     }
 }
