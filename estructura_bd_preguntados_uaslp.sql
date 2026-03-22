@@ -28,6 +28,7 @@ CREATE TABLE preguntas (
     FOREIGN KEY (id_categoria)
     REFERENCES categorias(id_categoria)
 );
+
 /*
 Ejemplo de insertar
 INSERT INTO preguntas VALUES
@@ -57,6 +58,65 @@ INSERT INTO respuestas VALUES
 (2014,201,'Ridley Scott',FALSE);
 */
 SELECT * FROM respuestas;
+
+-- Agregue preguntas y respuestas de las categorías cine y tecnología
+
+-- Cine:
+INSERT INTO preguntas VALUES
+(301,3,'¿Qué actor interpretó a Jack Dawson en Titanic (1997)?','texto'),
+(302,3,'¿Cómo se llama el parque de dinosaurios en la película de 1993 de Spielberg?','texto'),
+(303,3,'¿Qué director hizo Inception, Interstellar y Tenet?','texto'),
+(304,3,'¿Qué estudio creó Toy Story y Up?','texto');
+
+INSERT INTO respuestas VALUES
+(3011,301,'Brad Pitt',FALSE),
+(3012,301,'Leonardo DiCaprio',TRUE),
+(3013,301,'Matt Damon',FALSE),
+(3014,301,'Tom Cruise',FALSE),
+
+(3021,302,'Mundo Jurásico',FALSE),
+(3022,302,'Parque Cretácico',FALSE),
+(3023,302,'Parque Jurásico',TRUE),
+(3024,302,'Isla de los Dinosaurios',FALSE),
+
+(3031,303,'Quentin Tarantino',FALSE),
+(3032,303,'Steven Spielberg',FALSE),
+(3033,303,'Christopher Nolan',TRUE),
+(3034,303,'James Cameron',FALSE),
+
+(3041,304,'DreamWorks Animation',FALSE),
+(3042,304,'Pixar Animation Studios',TRUE),
+(3043,304,'Illumination Entertainment',FALSE),
+(3044,304,'Blue Sky Studios',FALSE);
+
+-- Tecnologia:
+INSERT INTO preguntas VALUES
+(401,4,'¿Qué compañía fundaron Bill Gates y Paul Allen en 1975?','texto'),
+(402,4,'¿Qué sistema operativo usa un robot verde como logo?','texto'),
+(403,4,'¿Qué empresa popularizó el smartphone moderno con pantalla táctil?','texto'),
+(404,4,'¿Qué empresa desarrolló Symbian?','texto');
+
+INSERT INTO respuestas VALUES
+(4011,401,'Apple',FALSE),
+(4012,401,'IBM',FALSE),
+(4013,401,'Microsoft',TRUE),
+(4014,401,'Google',FALSE),
+
+(4021,402,'iOS',FALSE),
+(4022,402,'Android',TRUE),
+(4023,402,'Windows Phone',FALSE),
+(4024,402,'HarmonyOS',FALSE),
+
+(4031,403,'Samsung',FALSE),
+(4032,403,'Nokia',FALSE),
+(4033,403,'BlackBerry',FALSE),
+(4034,403,'Apple',TRUE),
+
+(4041,404,'Samsung',FALSE),
+(4042,404,'Motorola',FALSE),
+(4043,404,'Nokia',TRUE),
+(4044,404,'Sony Ericsson',FALSE);
+
 
 CREATE TABLE partidas (
     id_partida INT AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +149,6 @@ CREATE TABLE respuestas_partida (
     FOREIGN KEY (id_pregunta)
     REFERENCES preguntas(id_pregunta)
 );
-
 
 /*
 Ejemplo de como seria el into
