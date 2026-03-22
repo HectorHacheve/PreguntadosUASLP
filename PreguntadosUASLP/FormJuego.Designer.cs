@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             label_pregunta = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            pictureBox_fondoPregunta = new PictureBox();
+            label_placeholder2 = new Label();
+            label_placeholder4 = new Label();
+            label_placeholder1 = new Label();
             btn_audio1 = new Button();
             btn_audio2 = new Button();
             btn_audio4 = new Button();
             btn_audio3 = new Button();
-            label4 = new Label();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
+            label_placeholder3 = new Label();
+            pictureBox_op1 = new PictureBox();
+            pictureBox_op2 = new PictureBox();
+            pictureBox_op3 = new PictureBox();
+            pictureBox_op4 = new PictureBox();
             label01 = new Label();
-            label5 = new Label();
+            label02 = new Label();
             label03 = new Label();
             label04 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_fondoPregunta).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op4).BeginInit();
             SuspendLayout();
             // 
             // label_pregunta
@@ -65,49 +65,49 @@
             label_pregunta.Text = "(Ingresar pregunta)";
             label_pregunta.Click += label_pregunta_Click;
             // 
-            // pictureBox1
+            // pictureBox_fondoPregunta
             // 
-            pictureBox1.BackColor = Color.Lavender;
-            pictureBox1.ErrorImage = Properties.Resources.preguntas1;
-            pictureBox1.Location = new Point(133, 97);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(901, 108);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            pictureBox_fondoPregunta.BackColor = Color.Lavender;
+            pictureBox_fondoPregunta.ErrorImage = Properties.Resources.preguntas1;
+            pictureBox_fondoPregunta.Location = new Point(133, 97);
+            pictureBox_fondoPregunta.Name = "pictureBox_fondoPregunta";
+            pictureBox_fondoPregunta.Size = new Size(901, 108);
+            pictureBox_fondoPregunta.TabIndex = 1;
+            pictureBox_fondoPregunta.TabStop = false;
             // 
-            // label1
+            // label_placeholder2
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Lavender;
-            label1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(976, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(191, 23);
-            label1.TabIndex = 2;
-            label1.Text = "(num de pregunta)";
-            label1.Click += label1_Click;
+            label_placeholder2.AutoSize = true;
+            label_placeholder2.BackColor = Color.Lavender;
+            label_placeholder2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder2.Location = new Point(976, 19);
+            label_placeholder2.Name = "label_placeholder2";
+            label_placeholder2.Size = new Size(191, 23);
+            label_placeholder2.TabIndex = 2;
+            label_placeholder2.Text = "(num de pregunta)";
+            label_placeholder2.Click += label1_Click;
             // 
-            // label2
+            // label_placeholder4
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Lavender;
-            label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(455, 654);
-            label2.Name = "label2";
-            label2.Size = new Size(242, 23);
-            label2.TabIndex = 3;
-            label2.Text = "(btn para sig. pregunta)";
+            label_placeholder4.AutoSize = true;
+            label_placeholder4.BackColor = Color.Lavender;
+            label_placeholder4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder4.Location = new Point(455, 654);
+            label_placeholder4.Name = "label_placeholder4";
+            label_placeholder4.Size = new Size(242, 23);
+            label_placeholder4.TabIndex = 3;
+            label_placeholder4.Text = "(btn para sig. pregunta)";
             // 
-            // label3
+            // label_placeholder1
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Lavender;
-            label3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(118, 23);
-            label3.TabIndex = 4;
-            label3.Text = "(categoria)";
+            label_placeholder1.AutoSize = true;
+            label_placeholder1.BackColor = Color.Lavender;
+            label_placeholder1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder1.Location = new Point(12, 19);
+            label_placeholder1.Name = "label_placeholder1";
+            label_placeholder1.Size = new Size(118, 23);
+            label_placeholder1.TabIndex = 4;
+            label_placeholder1.Text = "(categoria)";
             // 
             // btn_audio1
             // 
@@ -145,49 +145,49 @@
             btn_audio3.Text = "btn_audio3";
             btn_audio3.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // label_placeholder3
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Lavender;
-            label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(455, 600);
-            label4.Name = "label4";
-            label4.Size = new Size(255, 23);
-            label4.TabIndex = 9;
-            label4.Text = "(reemplazar con puntaje)";
+            label_placeholder3.AutoSize = true;
+            label_placeholder3.BackColor = Color.Lavender;
+            label_placeholder3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder3.Location = new Point(455, 600);
+            label_placeholder3.Name = "label_placeholder3";
+            label_placeholder3.Size = new Size(255, 23);
+            label_placeholder3.TabIndex = 9;
+            label_placeholder3.Text = "(reemplazar con puntaje)";
             // 
-            // pictureBox2
+            // pictureBox_op1
             // 
-            pictureBox2.Location = new Point(20, 266);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(279, 287);
-            pictureBox2.TabIndex = 10;
-            pictureBox2.TabStop = false;
+            pictureBox_op1.Location = new Point(20, 266);
+            pictureBox_op1.Name = "pictureBox_op1";
+            pictureBox_op1.Size = new Size(279, 287);
+            pictureBox_op1.TabIndex = 10;
+            pictureBox_op1.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBox_op2
             // 
-            pictureBox3.Location = new Point(305, 266);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(279, 287);
-            pictureBox3.TabIndex = 11;
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
+            pictureBox_op2.Location = new Point(305, 266);
+            pictureBox_op2.Name = "pictureBox_op2";
+            pictureBox_op2.Size = new Size(279, 287);
+            pictureBox_op2.TabIndex = 11;
+            pictureBox_op2.TabStop = false;
+            pictureBox_op2.Click += pictureBox3_Click;
             // 
-            // pictureBox4
+            // pictureBox_op3
             // 
-            pictureBox4.Location = new Point(590, 266);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(279, 287);
-            pictureBox4.TabIndex = 12;
-            pictureBox4.TabStop = false;
+            pictureBox_op3.Location = new Point(590, 266);
+            pictureBox_op3.Name = "pictureBox_op3";
+            pictureBox_op3.Size = new Size(279, 287);
+            pictureBox_op3.TabIndex = 12;
+            pictureBox_op3.TabStop = false;
             // 
-            // pictureBox5
+            // pictureBox_op4
             // 
-            pictureBox5.Location = new Point(875, 266);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(279, 287);
-            pictureBox5.TabIndex = 13;
-            pictureBox5.TabStop = false;
+            pictureBox_op4.Location = new Point(875, 266);
+            pictureBox_op4.Name = "pictureBox_op4";
+            pictureBox_op4.Size = new Size(279, 287);
+            pictureBox_op4.TabIndex = 13;
+            pictureBox_op4.TabStop = false;
             // 
             // label01
             // 
@@ -200,16 +200,16 @@
             label01.Text = "label01";
             label01.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // label02
             // 
-            label5.BackColor = Color.Lavender;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(601, 266);
-            label5.Name = "label5";
-            label5.Size = new Size(351, 141);
-            label5.TabIndex = 15;
-            label5.Text = "label02";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label02.BackColor = Color.Lavender;
+            label02.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label02.Location = new Point(601, 266);
+            label02.Name = "label02";
+            label02.Size = new Size(351, 141);
+            label02.TabIndex = 15;
+            label02.Text = "label02";
+            label02.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label03
             // 
@@ -242,33 +242,33 @@
             BackgroundImage = Properties.Resources.fondoMorado;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1179, 775);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(label4);
+            Controls.Add(pictureBox_op4);
+            Controls.Add(pictureBox_op3);
+            Controls.Add(pictureBox_op2);
+            Controls.Add(pictureBox_op1);
+            Controls.Add(label_placeholder3);
             Controls.Add(btn_audio3);
             Controls.Add(btn_audio4);
             Controls.Add(btn_audio2);
             Controls.Add(btn_audio1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(label_placeholder1);
+            Controls.Add(label_placeholder4);
+            Controls.Add(label_placeholder2);
             Controls.Add(label_pregunta);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox_fondoPregunta);
             Controls.Add(label04);
             Controls.Add(label03);
-            Controls.Add(label5);
+            Controls.Add(label02);
             Controls.Add(label01);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             Text = "Preguntados UASLP";
             Load += FormJuego_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_fondoPregunta).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_op4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,21 +276,21 @@
         #endregion
 
         private Label label_pregunta;
-        private PictureBox pictureBox1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private PictureBox pictureBox_fondoPregunta;
+        private Label label_placeholder1; //categoria
+        private Label label_placeholder2; //num de pregunta
+        private Label label_placeholder3; //puntaje
+        private Label label_placeholder4; //btn para siguiente pregunta
         private Button btn_audio1;
         private Button btn_audio2;
         private Button btn_audio4;
         private Button btn_audio3;
-        private Label label4;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
+        private PictureBox pictureBox_op1;
+        private PictureBox pictureBox_op2;
+        private PictureBox pictureBox_op3;
+        private PictureBox pictureBox_op4;
         private Label label01;
-        private Label label5;
+        private Label label02;
         private Label label03;
         private Label label04;
     }
