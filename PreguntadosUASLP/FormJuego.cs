@@ -19,32 +19,51 @@ namespace PreguntadosUASLP
 
         private void FormJuego_Load(object sender, EventArgs e)
         {
-
+            label_placeholder1.Text = categoria;
+            MostrarTipoPregunta("audio"); // texto, image o audio (lo que quieres mostrar)
         }
 
-        private void label_pregunta_Click(object sender, EventArgs e)
+        private void MostrarTipoPregunta(string tipo)
         {
+            label01.Visible = false; // op. de texto
+            label02.Visible = false;
+            label03.Visible = false;
+            label04.Visible = false;
 
-        }
+            btn_audio1.Visible = false; // op. de audio
+            btn_audio2.Visible = false;
+            btn_audio3.Visible = false;
+            btn_audio4.Visible = false;
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+            pictureBox_op1.Visible = false; // op. de img
+            pictureBox_op2.Visible = false;
+            pictureBox_op3.Visible = false;
+            pictureBox_op4.Visible = false;
 
-        }
+            // mostrar según tipo
+            switch (tipo)
+            {
+                case "texto":
+                    label01.Visible = true;
+                    label02.Visible = true;
+                    label03.Visible = true;
+                    label04.Visible = true;
+                    break;
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
+                case "imagen":
+                    pictureBox_op1.Visible = true;
+                    pictureBox_op2.Visible = true;
+                    pictureBox_op3.Visible = true;
+                    pictureBox_op4.Visible = true;
+                    break;
 
-        }
-
-        private void label02_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
+                case "audio":
+                    btn_audio1.Visible = true;
+                    btn_audio2.Visible = true;
+                    btn_audio3.Visible = true;
+                    btn_audio4.Visible = true;
+                    break;
+            }
         }
     }
 }
