@@ -15,7 +15,8 @@ namespace PreguntadosUASLP
         string? respuestaCorrectaTexto;
         int puntuacion = 0;
         int preguntasRespondidas = 0;
-        int totalPreguntas = 5;
+        int totalPreguntas = 10;
+        List<int> preguntasUsadas = new List<int>();
 
         public FormJuego(int categoriaRecibida)
         {
@@ -27,6 +28,11 @@ namespace PreguntadosUASLP
             label03.Click += label03_Click;
             label04.Click += label04_Click;
 
+            label_pregunta.AutoSize = false;
+            label_pregunta.Size = new System.Drawing.Size(901, 108);
+            label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
+            label_pregunta.Location = new System.Drawing.Point(134, 115);
+
             CargarSiguientePregunta();
         }
 
@@ -34,8 +40,13 @@ namespace PreguntadosUASLP
         {
             label_placeholder1.Text = ObtenerNombreCategoria();
             label_placeholder3.Text = "Puntaje: 0";
-            label_placeholder4.Text = "Pregunta 1/5";
+            ActualizarNumeroPregunta();
             ImagenCategoria();
+        }
+
+        private void ActualizarNumeroPregunta()
+        {
+            label_placeholder2.Text = "Pregunta " + (preguntasRespondidas + 1) + "/" + totalPreguntas;
         }
 
         private string ObtenerNombreCategoria()
@@ -77,7 +88,7 @@ namespace PreguntadosUASLP
             }
         }
 
-        private bool HayPreguntasDisponibles()
+        private int ObtenerTotalPreguntasBD()
         {
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -85,14 +96,15 @@ namespace PreguntadosUASLP
                 string query = "SELECT COUNT(*) FROM preguntas WHERE id_categoria = @cat";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@cat", categoriaId);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                return count > 0;
+                return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
 
         private void CargarSiguientePregunta()
         {
-            if (!HayPreguntasDisponibles())
+            int totalBD = ObtenerTotalPreguntasBD();
+
+            if (totalBD == 0)
             {
                 MessageBox.Show("No hay preguntas en esta categoría");
                 this.Close();
@@ -106,13 +118,29 @@ namespace PreguntadosUASLP
                 return;
             }
 
+            if (preguntasUsadas.Count >= totalBD)
+            {
+                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + preguntasRespondidas);
+                this.Close();
+                return;
+            }
+
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 try
                 {
                     conn.Open();
 
-                    string query = "SELECT id_pregunta, pregunta, tipo FROM preguntas WHERE id_categoria = @cat ORDER BY RAND() LIMIT 1";
+                    string query = "SELECT id_pregunta, pregunta, tipo FROM preguntas WHERE id_categoria = @cat";
+
+                    if (preguntasUsadas.Count > 0)
+                    {
+                        string idsUsados = string.Join(",", preguntasUsadas);
+                        query += " AND id_pregunta NOT IN (" + idsUsados + ")";
+                    }
+
+                    query += " ORDER BY RAND() LIMIT 1";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@cat", categoriaId);
 
@@ -121,6 +149,8 @@ namespace PreguntadosUASLP
                     if (reader.Read())
                     {
                         idPreguntaActual = Convert.ToInt32(reader["id_pregunta"]);
+                        preguntasUsadas.Add(idPreguntaActual);
+
                         label_pregunta.Text = reader["pregunta"].ToString();
                         string tipoPregunta = reader["tipo"] != null ? reader["tipo"].ToString() : "texto";
 
@@ -128,6 +158,12 @@ namespace PreguntadosUASLP
 
                         CargarRespuestas(conn);
                         MostrarTipoPregunta(tipoPregunta);
+                        ActualizarNumeroPregunta();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay más preguntas disponibles");
+                        this.Close();
                     }
                 }
                 catch (MySqlException ex)
@@ -169,6 +205,22 @@ namespace PreguntadosUASLP
                     label02.Text = respuestas[1];
                     label03.Text = respuestas[2];
                     label04.Text = respuestas[3];
+
+                    label01.AutoSize = false;
+                    label01.Size = new System.Drawing.Size(351, 141);
+                    label01.TextAlign = ContentAlignment.MiddleCenter;
+
+                    label02.AutoSize = false;
+                    label02.Size = new System.Drawing.Size(351, 141);
+                    label02.TextAlign = ContentAlignment.MiddleCenter;
+
+                    label03.AutoSize = false;
+                    label03.Size = new System.Drawing.Size(351, 141);
+                    label03.TextAlign = ContentAlignment.MiddleCenter;
+
+                    label04.AutoSize = false;
+                    label04.Size = new System.Drawing.Size(351, 141);
+                    label04.TextAlign = ContentAlignment.MiddleCenter;
                 }
             }
             catch (Exception ex)
