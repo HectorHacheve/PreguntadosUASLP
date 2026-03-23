@@ -10,7 +10,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=tu_contraseña;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=;";
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -57,8 +57,6 @@ namespace PreguntadosUASLP
             botonConfirmar.BackColor = System.Drawing.Color.Gray;
             this.Controls.Add(botonConfirmar);
             botonConfirmar.BringToFront();
-
-            CargarSiguientePregunta();
         }
 
         //Detener audio al cerrar el formulario
@@ -85,6 +83,7 @@ namespace PreguntadosUASLP
             label_placeholder3.Text = "Puntaje: 0";
             ActualizarNumeroPregunta();
             ImagenCategoria();
+            CargarSiguientePregunta();
         }
 
         private void ActualizarNumeroPregunta()
