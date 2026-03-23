@@ -61,9 +61,7 @@
             label_pregunta.BackColor = Color.Transparent;
             label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pregunta.ForeColor = Color.Transparent;
-            label_pregunta.Image = Properties.Resources.btn_label;
-            label_pregunta.Location = new Point(481, 138);
-            label_pregunta.Margin = new Padding(3);
+            label_pregunta.Location = new Point(481, 135);
             label_pregunta.Name = "label_pregunta";
             label_pregunta.Size = new Size(272, 38);
             label_pregunta.TabIndex = 0;
@@ -108,82 +106,106 @@
             // 
             // btn_audio1
             // 
+            btn_audio1.BackColor = Color.Lavender;
+            btn_audio1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio1.Location = new Point(243, 283);
             btn_audio1.Name = "btn_audio1";
             btn_audio1.Size = new Size(363, 119);
             btn_audio1.TabIndex = 5;
             btn_audio1.Text = "btn_audio1";
-            btn_audio1.UseVisualStyleBackColor = true;
+            btn_audio1.UseVisualStyleBackColor = false;
+            btn_audio1.Click += this.btn_audio1_Click;
             // 
             // btn_audio2
             // 
+            btn_audio2.AutoSize = true;
+            btn_audio2.BackColor = Color.Lavender;
+            btn_audio2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio2.Location = new Point(623, 283);
             btn_audio2.Name = "btn_audio2";
             btn_audio2.Size = new Size(363, 119);
             btn_audio2.TabIndex = 6;
             btn_audio2.Text = "btn_audio2";
-            btn_audio2.UseVisualStyleBackColor = true;
+            btn_audio2.UseVisualStyleBackColor = false;
+            btn_audio2.Click += this.btn_audio2_Click;
             // 
             // btn_audio4
             // 
+            btn_audio4.BackColor = Color.Lavender;
+            btn_audio4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio4.Location = new Point(623, 424);
             btn_audio4.Name = "btn_audio4";
             btn_audio4.Size = new Size(363, 119);
             btn_audio4.TabIndex = 7;
             btn_audio4.Text = "btn_audio4";
-            btn_audio4.UseVisualStyleBackColor = true;
+            btn_audio4.UseVisualStyleBackColor = false;
+            btn_audio4.Click += btn_audio4_Click;
             // 
             // btn_audio3
             // 
+            btn_audio3.BackColor = Color.Lavender;
+            btn_audio3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio3.Location = new Point(243, 424);
             btn_audio3.Name = "btn_audio3";
             btn_audio3.Size = new Size(363, 119);
             btn_audio3.TabIndex = 8;
             btn_audio3.Text = "btn_audio3";
-            btn_audio3.UseVisualStyleBackColor = true;
+            btn_audio3.UseVisualStyleBackColor = false;
+            btn_audio3.Click += this.btn_audio3_Click;
             // 
             // label_placeholder3
             // 
             label_placeholder3.AutoSize = true;
-            label_placeholder3.BackColor = Color.Lavender;
-            label_placeholder3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_placeholder3.Location = new Point(498, 607);
+            label_placeholder3.BackColor = Color.Transparent;
+            label_placeholder3.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder3.ForeColor = Color.DarkSlateBlue;
+            label_placeholder3.Location = new Point(503, 609);
             label_placeholder3.Name = "label_placeholder3";
-            label_placeholder3.Size = new Size(255, 23);
+            label_placeholder3.Size = new Size(250, 28);
             label_placeholder3.TabIndex = 9;
             label_placeholder3.Text = "(reemplazar con puntaje)";
+            label_placeholder3.TextAlign = ContentAlignment.MiddleCenter;
+            label_placeholder3.Click += label_placeholder3_Click;
             // 
             // pictureBox_op1
             // 
+            pictureBox_op1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_op1.Location = new Point(21, 268);
             pictureBox_op1.Name = "pictureBox_op1";
-            pictureBox_op1.Size = new Size(279, 297);
+            pictureBox_op1.Size = new Size(280, 297);
             pictureBox_op1.TabIndex = 10;
             pictureBox_op1.TabStop = false;
+            pictureBox_op1.BackgroundImageLayoutChanged += FormJuego_Load;
             // 
             // pictureBox_op2
             // 
+            pictureBox_op2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_op2.Location = new Point(306, 268);
             pictureBox_op2.Name = "pictureBox_op2";
-            pictureBox_op2.Size = new Size(279, 297);
+            pictureBox_op2.Size = new Size(280, 297);
             pictureBox_op2.TabIndex = 11;
             pictureBox_op2.TabStop = false;
+            pictureBox_op2.BackgroundImageLayoutChanged += FormJuego_Load;
             // 
             // pictureBox_op3
             // 
+            pictureBox_op3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_op3.Location = new Point(591, 268);
             pictureBox_op3.Name = "pictureBox_op3";
-            pictureBox_op3.Size = new Size(279, 297);
+            pictureBox_op3.Size = new Size(280, 297);
             pictureBox_op3.TabIndex = 12;
             pictureBox_op3.TabStop = false;
+            pictureBox_op3.BackgroundImageLayoutChanged += FormJuego_Load;
             // 
             // pictureBox_op4
             // 
+            pictureBox_op4.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_op4.Location = new Point(876, 268);
             pictureBox_op4.Name = "pictureBox_op4";
-            pictureBox_op4.Size = new Size(279, 297);
+            pictureBox_op4.Size = new Size(280, 297);
             pictureBox_op4.TabIndex = 13;
             pictureBox_op4.TabStop = false;
+            pictureBox_op4.BackgroundImageLayoutChanged += FormJuego_Load;
             // 
             // label01
             // 
@@ -233,7 +255,6 @@
             // pictureBox_cat1
             // 
             pictureBox_cat1.BackColor = Color.Transparent;
-            pictureBox_cat1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_cat1.Location = new Point(12, 68);
             pictureBox_cat1.Name = "pictureBox_cat1";
             pictureBox_cat1.Size = new Size(211, 189);
@@ -243,6 +264,7 @@
             // pictureBox_cat2
             // 
             pictureBox_cat2.BackColor = Color.Transparent;
+            pictureBox_cat2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_cat2.Location = new Point(930, 577);
             pictureBox_cat2.Name = "pictureBox_cat2";
             pictureBox_cat2.Size = new Size(237, 186);
@@ -257,25 +279,25 @@
             BackgroundImage = Properties.Resources.fondoMorado;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1179, 775);
-            Controls.Add(label_pregunta);
-            Controls.Add(pictureBox_cat2);
+            Controls.Add(label04);
+            Controls.Add(label02);
             Controls.Add(pictureBox_cat1);
+            Controls.Add(pictureBox_cat2);
+            Controls.Add(label_pregunta);
             Controls.Add(label_placeholder3);
             Controls.Add(label_placeholder1);
             Controls.Add(label_placeholder4);
             Controls.Add(label_placeholder2);
-            Controls.Add(label04);
             Controls.Add(label03);
-            Controls.Add(label02);
             Controls.Add(label01);
             Controls.Add(btn_audio3);
             Controls.Add(btn_audio4);
-            Controls.Add(btn_audio2);
             Controls.Add(btn_audio1);
-            Controls.Add(pictureBox_op4);
-            Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op2);
             Controls.Add(pictureBox_op1);
+            Controls.Add(btn_audio2);
+            Controls.Add(pictureBox_op3);
+            Controls.Add(pictureBox_op4);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;

@@ -303,10 +303,10 @@ namespace PreguntadosUASLP
                         btn_audio3.Tag = respuestas[2];
                         btn_audio4.Tag = respuestas[3];
 
-                        btn_audio1.Text = "Opción 1";
-                        btn_audio2.Text = "Opción 2";
-                        btn_audio3.Text = "Opción 3";
-                        btn_audio4.Text = "Opción 4";
+                        btn_audio1.Text = "Audio 1";
+                        btn_audio2.Text = "Audio 2";
+                        btn_audio3.Text = "Audio 3";
+                        btn_audio4.Text = "Audio 4";
                     }
                 }
             }
@@ -562,6 +562,16 @@ namespace PreguntadosUASLP
         }
 
         private void label_pregunta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_placeholder3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_audio4_Click(object sender, EventArgs e)
         {
 
         }
