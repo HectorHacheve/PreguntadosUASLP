@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label_pregunta = new Label();
-            pictureBox_fondoPregunta = new PictureBox();
             label_placeholder2 = new Label();
             label_placeholder4 = new Label();
             label_placeholder1 = new Label();
@@ -48,7 +47,6 @@
             label04 = new Label();
             pictureBox_cat1 = new PictureBox();
             pictureBox_cat2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox_fondoPregunta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op3).BeginInit();
@@ -63,24 +61,15 @@
             label_pregunta.BackColor = Color.Transparent;
             label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pregunta.ForeColor = Color.Transparent;
-            label_pregunta.Location = new Point(469, 138);
+            label_pregunta.Image = Properties.Resources.btn_label;
+            label_pregunta.Location = new Point(481, 138);
+            label_pregunta.Margin = new Padding(3);
             label_pregunta.Name = "label_pregunta";
             label_pregunta.Size = new Size(272, 38);
             label_pregunta.TabIndex = 0;
             label_pregunta.Text = "(Ingresar pregunta)";
+            label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
             label_pregunta.Click += label_pregunta_Click;
-            // 
-            // pictureBox_fondoPregunta
-            // 
-            pictureBox_fondoPregunta.BackColor = Color.Transparent;
-            pictureBox_fondoPregunta.BackgroundImage = Properties.Resources.btn_label;
-            pictureBox_fondoPregunta.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox_fondoPregunta.ErrorImage = Properties.Resources.preguntas1;
-            pictureBox_fondoPregunta.Location = new Point(276, 109);
-            pictureBox_fondoPregunta.Name = "pictureBox_fondoPregunta";
-            pictureBox_fondoPregunta.Size = new Size(655, 108);
-            pictureBox_fondoPregunta.TabIndex = 1;
-            pictureBox_fondoPregunta.TabStop = false;
             // 
             // label_placeholder2
             // 
@@ -244,7 +233,7 @@
             // pictureBox_cat1
             // 
             pictureBox_cat1.BackColor = Color.Transparent;
-            pictureBox_cat1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox_cat1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox_cat1.Location = new Point(12, 68);
             pictureBox_cat1.Name = "pictureBox_cat1";
             pictureBox_cat1.Size = new Size(211, 189);
@@ -268,13 +257,13 @@
             BackgroundImage = Properties.Resources.fondoMorado;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1179, 775);
+            Controls.Add(label_pregunta);
             Controls.Add(pictureBox_cat2);
             Controls.Add(pictureBox_cat1);
             Controls.Add(label_placeholder3);
             Controls.Add(label_placeholder1);
             Controls.Add(label_placeholder4);
             Controls.Add(label_placeholder2);
-            Controls.Add(label_pregunta);
             Controls.Add(label04);
             Controls.Add(label03);
             Controls.Add(label02);
@@ -287,13 +276,11 @@
             Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op2);
             Controls.Add(pictureBox_op1);
-            Controls.Add(pictureBox_fondoPregunta);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Preguntados UASLP";
             Load += FormJuego_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox_fondoPregunta).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op3).EndInit();
@@ -307,7 +294,6 @@
         #endregion
 
         private Label label_pregunta;
-        private PictureBox pictureBox_fondoPregunta;
         private Label label_placeholder1; //categoria
         private Label label_placeholder2; //num de pregunta
         private Label label_placeholder3; //puntaje
