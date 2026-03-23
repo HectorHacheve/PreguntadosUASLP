@@ -60,17 +60,21 @@
             // label_pregunta
             // 
             label_pregunta.AutoSize = true;
-            label_pregunta.BackColor = Color.Lavender;
-            label_pregunta.Font = new Font("Arial Rounded MT Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_pregunta.Location = new Point(469, 154);
+            label_pregunta.BackColor = Color.Transparent;
+            label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_pregunta.ForeColor = Color.Transparent;
+            label_pregunta.Location = new Point(469, 138);
             label_pregunta.Name = "label_pregunta";
-            label_pregunta.Size = new Size(284, 32);
+            label_pregunta.Size = new Size(272, 38);
             label_pregunta.TabIndex = 0;
             label_pregunta.Text = "(Ingresar pregunta)";
+            label_pregunta.Click += label_pregunta_Click;
             // 
             // pictureBox_fondoPregunta
             // 
-            pictureBox_fondoPregunta.BackColor = Color.Lavender;
+            pictureBox_fondoPregunta.BackColor = Color.Transparent;
+            pictureBox_fondoPregunta.BackgroundImage = Properties.Resources.btn_label;
+            pictureBox_fondoPregunta.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox_fondoPregunta.ErrorImage = Properties.Resources.preguntas1;
             pictureBox_fondoPregunta.Location = new Point(276, 109);
             pictureBox_fondoPregunta.Name = "pictureBox_fondoPregunta";
@@ -81,11 +85,12 @@
             // label_placeholder2
             // 
             label_placeholder2.AutoSize = true;
-            label_placeholder2.BackColor = Color.Lavender;
-            label_placeholder2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_placeholder2.Location = new Point(976, 19);
+            label_placeholder2.BackColor = Color.Transparent;
+            label_placeholder2.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder2.ForeColor = Color.WhiteSmoke;
+            label_placeholder2.Location = new Point(968, 15);
             label_placeholder2.Name = "label_placeholder2";
-            label_placeholder2.Size = new Size(191, 23);
+            label_placeholder2.Size = new Size(187, 28);
             label_placeholder2.TabIndex = 2;
             label_placeholder2.Text = "(num de pregunta)";
             // 
@@ -103,11 +108,12 @@
             // label_placeholder1
             // 
             label_placeholder1.AutoSize = true;
-            label_placeholder1.BackColor = Color.Lavender;
-            label_placeholder1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_placeholder1.Location = new Point(12, 19);
+            label_placeholder1.BackColor = Color.Transparent;
+            label_placeholder1.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label_placeholder1.ForeColor = Color.WhiteSmoke;
+            label_placeholder1.Location = new Point(21, 15);
             label_placeholder1.Name = "label_placeholder1";
-            label_placeholder1.Size = new Size(118, 23);
+            label_placeholder1.Size = new Size(118, 28);
             label_placeholder1.TabIndex = 4;
             label_placeholder1.Text = "(categoria)";
             // 
@@ -193,18 +199,19 @@
             // label01
             // 
             label01.BackColor = Color.Lavender;
-            label01.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label01.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label01.Location = new Point(255, 268);
             label01.Name = "label01";
             label01.Size = new Size(351, 141);
             label01.TabIndex = 14;
             label01.Text = "label01";
             label01.TextAlign = ContentAlignment.MiddleCenter;
+            label01.Click += label01_Click_1;
             // 
             // label02
             // 
             label02.BackColor = Color.Lavender;
-            label02.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label02.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label02.Location = new Point(623, 268);
             label02.Name = "label02";
             label02.Size = new Size(351, 141);
@@ -215,7 +222,7 @@
             // label03
             // 
             label03.BackColor = Color.Lavender;
-            label03.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label03.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label03.Location = new Point(255, 424);
             label03.Name = "label03";
             label03.Size = new Size(351, 141);
@@ -226,7 +233,7 @@
             // label04
             // 
             label04.BackColor = Color.Lavender;
-            label04.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label04.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label04.Location = new Point(623, 424);
             label04.Name = "label04";
             label04.Size = new Size(351, 141);
@@ -268,7 +275,6 @@
             Controls.Add(label_placeholder4);
             Controls.Add(label_placeholder2);
             Controls.Add(label_pregunta);
-            Controls.Add(pictureBox_fondoPregunta);
             Controls.Add(label04);
             Controls.Add(label03);
             Controls.Add(label02);
@@ -281,6 +287,7 @@
             Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op2);
             Controls.Add(pictureBox_op1);
+            Controls.Add(pictureBox_fondoPregunta);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;

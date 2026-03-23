@@ -10,7 +10,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;";
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -326,7 +326,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C: tu_ruta", Path.GetFileName(rutaImagen))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -511,7 +511,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C: tu_ruta", Path.GetFileName(rutaAudio))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -554,6 +554,16 @@ namespace PreguntadosUASLP
                 btn_audio4.BackColor = System.Drawing.SystemColors.Control;
                 button.BackColor = System.Drawing.Color.LightGreen;
             }
+        }
+
+        private void label01_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_pregunta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
