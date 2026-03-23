@@ -1,6 +1,8 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -8,16 +10,20 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=irazema05;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=tu_contraseña;";
         int categoriaId;
-        string? categoria;
+        string categoria;
         int idPreguntaActual;
         int respuestaCorrectaId;
-        string? respuestaCorrectaTexto;
+        string respuestaCorrectaTexto;
         int puntuacion = 0;
         int preguntasRespondidas = 0;
-        int totalPreguntas = 10;
+        int totalPreguntas = 12;
         List<int> preguntasUsadas = new List<int>();
+        string respuestaSeleccionadaTemp = "";
+        Button botonConfirmar;
+        ////Variable para controlar la reproducción de audio y poder detenerlo
+        System.Media.SoundPlayer reproductorActual = null;
 
         public FormJuego(int categoriaRecibida)
         {
@@ -39,7 +45,38 @@ namespace PreguntadosUASLP
             label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
             label_pregunta.Location = new System.Drawing.Point(134, 115);
 
+            //Crear boton de confirmar y ajustar posición más abajo
+            botonConfirmar = new Button();
+            botonConfirmar.Text = "Confirmar respuesta";
+            botonConfirmar.Size = new System.Drawing.Size(300, 50);
+            botonConfirmar.Location = new System.Drawing.Point(100, 800); // Posición más abajo
+            botonConfirmar.BackColor = System.Drawing.Color.Gold;
+            botonConfirmar.Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
+            botonConfirmar.Click += BotonConfirmar_Click;
+            botonConfirmar.Enabled = false;
+            botonConfirmar.BackColor = System.Drawing.Color.Gray;
+            this.Controls.Add(botonConfirmar);
+            botonConfirmar.BringToFront();
+
             CargarSiguientePregunta();
+        }
+
+        //Detener audio al cerrar el formulario
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            DetenerAudio();
+            base.OnFormClosing(e);
+        }
+
+        //Método para detener el audio actual
+        private void DetenerAudio()
+        {
+            if (reproductorActual != null)
+            {
+                reproductorActual.Stop();
+                reproductorActual.Dispose();
+                reproductorActual = null;
+            }
         }
 
         private void FormJuego_Load(object sender, EventArgs e)
@@ -65,9 +102,9 @@ namespace PreguntadosUASLP
                     string query = "SELECT nombre FROM categorias WHERE id_categoria = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@id", categoriaId);
-                    object? resultado = cmd.ExecuteScalar();
+                    object resultado = cmd.ExecuteScalar();
                     categoria = resultado != null ? resultado.ToString() : "Sin categoría";
-                    return categoria ?? "Sin categoría";
+                    return categoria;
                 }
                 catch (Exception)
                 {
@@ -102,13 +139,16 @@ namespace PreguntadosUASLP
                 string query = "SELECT COUNT(*) FROM preguntas WHERE id_categoria = @cat";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@cat", categoriaId);
-                object? resultado = cmd.ExecuteScalar();
+                object resultado = cmd.ExecuteScalar();
                 return resultado != null ? Convert.ToInt32(resultado) : 0;
             }
         }
 
         private void CargarSiguientePregunta()
         {
+            //Detener audio al cambiar de pregunta
+            DetenerAudio();
+
             int totalBD = ObtenerTotalPreguntasBD();
 
             if (totalBD == 0)
@@ -131,6 +171,10 @@ namespace PreguntadosUASLP
                 this.Close();
                 return;
             }
+
+            respuestaSeleccionadaTemp = "";
+            botonConfirmar.Enabled = false;
+            botonConfirmar.BackColor = System.Drawing.Color.Gray;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -195,12 +239,12 @@ namespace PreguntadosUASLP
                 while (reader.Read())
                 {
                     string respuesta = reader["respuesta"] != null ? reader["respuesta"].ToString() : "";
-                    respuestas.Add(respuesta ?? "");
+                    respuestas.Add(respuesta);
 
                     if (Convert.ToBoolean(reader["es_correcta"]))
                     {
                         respuestaCorrectaId = Convert.ToInt32(reader["id_respuesta"]);
-                        respuestaCorrectaTexto = respuesta ?? "";
+                        respuestaCorrectaTexto = respuesta;
                     }
                 }
 
@@ -259,6 +303,11 @@ namespace PreguntadosUASLP
                         btn_audio2.Tag = respuestas[1];
                         btn_audio3.Tag = respuestas[2];
                         btn_audio4.Tag = respuestas[3];
+
+                        btn_audio1.Text = "Opción 1";
+                        btn_audio2.Text = "Opción 2";
+                        btn_audio3.Text = "Opción 3";
+                        btn_audio4.Text = "Opción 4";
                     }
                 }
             }
@@ -272,7 +321,24 @@ namespace PreguntadosUASLP
         {
             try
             {
-                string rutaCompleta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaImagen);
+                string rutaCompleta = "";
+                string[] posiblesRutas = {
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaImagen),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
+                    Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
+                    Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
+                    Path.Combine(@"C: tu_ruta", Path.GetFileName(rutaImagen))
+                };
+
+                foreach (string ruta in posiblesRutas)
+                {
+                    if (File.Exists(ruta))
+                    {
+                        rutaCompleta = ruta;
+                        break;
+                    }
+                }
+
                 if (File.Exists(rutaCompleta))
                 {
                     pictureBox.Image = Image.FromFile(rutaCompleta);
@@ -291,6 +357,19 @@ namespace PreguntadosUASLP
 
         private void MostrarTipoPregunta(string tipo)
         {
+            label01.BackColor = System.Drawing.Color.Lavender;
+            label02.BackColor = System.Drawing.Color.Lavender;
+            label03.BackColor = System.Drawing.Color.Lavender;
+            label04.BackColor = System.Drawing.Color.Lavender;
+            pictureBox_op1.BackColor = System.Drawing.Color.Transparent;
+            pictureBox_op2.BackColor = System.Drawing.Color.Transparent;
+            pictureBox_op3.BackColor = System.Drawing.Color.Transparent;
+            pictureBox_op4.BackColor = System.Drawing.Color.Transparent;
+            btn_audio1.BackColor = System.Drawing.SystemColors.Control;
+            btn_audio2.BackColor = System.Drawing.SystemColors.Control;
+            btn_audio3.BackColor = System.Drawing.SystemColors.Control;
+            btn_audio4.BackColor = System.Drawing.SystemColors.Control;
+
             label01.Visible = false;
             label02.Visible = false;
             label03.Visible = false;
@@ -336,7 +415,7 @@ namespace PreguntadosUASLP
             }
             else
             {
-                MessageBox.Show("Incorrecto. Era: " + (respuestaCorrectaTexto ?? ""));
+                MessageBox.Show("Incorrecto!");
             }
 
             preguntasRespondidas++;
@@ -344,41 +423,137 @@ namespace PreguntadosUASLP
             CargarSiguientePregunta();
         }
 
-        private void label01_Click(object? sender, EventArgs e)
+        private void BotonConfirmar_Click(object sender, EventArgs e)
         {
-            VerificarRespuestaSeleccionada(label01.Text ?? "");
-        }
-
-        private void label02_Click(object? sender, EventArgs e)
-        {
-            VerificarRespuestaSeleccionada(label02.Text ?? "");
-        }
-
-        private void label03_Click(object? sender, EventArgs e)
-        {
-            VerificarRespuestaSeleccionada(label03.Text ?? "");
-        }
-
-        private void label04_Click(object? sender, EventArgs e)
-        {
-            VerificarRespuestaSeleccionada(label04.Text ?? "");
-        }
-
-        private void pictureBox_Click(object? sender, EventArgs e)
-        {
-            PictureBox? pictureBox = sender as PictureBox;
-            if (pictureBox != null && pictureBox.Tag != null)
+            if (!string.IsNullOrEmpty(respuestaSeleccionadaTemp))
             {
-                VerificarRespuestaSeleccionada(pictureBox.Tag.ToString() ?? "");
+                //Detener audio al confirmar respuesta
+                DetenerAudio();
+                VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
+                respuestaSeleccionadaTemp = "";
+                botonConfirmar.Enabled = false;
+                botonConfirmar.BackColor = System.Drawing.Color.Gray;
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una respuesta primero");
             }
         }
 
-        private void btn_audio_Click(object? sender, EventArgs e)
+        private void label01_Click(object sender, EventArgs e)
         {
-            Button? button = sender as Button;
+            respuestaSeleccionadaTemp = label01.Text;
+            botonConfirmar.Enabled = true;
+            botonConfirmar.BackColor = System.Drawing.Color.Green;
+            label01.BackColor = System.Drawing.Color.LightGreen;
+            label02.BackColor = System.Drawing.Color.Lavender;
+            label03.BackColor = System.Drawing.Color.Lavender;
+            label04.BackColor = System.Drawing.Color.Lavender;
+        }
+
+        private void label02_Click(object sender, EventArgs e)
+        {
+            respuestaSeleccionadaTemp = label02.Text;
+            botonConfirmar.Enabled = true;
+            botonConfirmar.BackColor = System.Drawing.Color.Green;
+            label01.BackColor = System.Drawing.Color.Lavender;
+            label02.BackColor = System.Drawing.Color.LightGreen;
+            label03.BackColor = System.Drawing.Color.Lavender;
+            label04.BackColor = System.Drawing.Color.Lavender;
+        }
+
+        private void label03_Click(object sender, EventArgs e)
+        {
+            respuestaSeleccionadaTemp = label03.Text;
+            botonConfirmar.Enabled = true;
+            botonConfirmar.BackColor = System.Drawing.Color.Green;
+            label01.BackColor = System.Drawing.Color.Lavender;
+            label02.BackColor = System.Drawing.Color.Lavender;
+            label03.BackColor = System.Drawing.Color.LightGreen;
+            label04.BackColor = System.Drawing.Color.Lavender;
+        }
+
+        private void label04_Click(object sender, EventArgs e)
+        {
+            respuestaSeleccionadaTemp = label04.Text;
+            botonConfirmar.Enabled = true;
+            botonConfirmar.BackColor = System.Drawing.Color.Green;
+            label01.BackColor = System.Drawing.Color.Lavender;
+            label02.BackColor = System.Drawing.Color.Lavender;
+            label03.BackColor = System.Drawing.Color.Lavender;
+            label04.BackColor = System.Drawing.Color.LightGreen;
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = sender as PictureBox;
+            if (pictureBox != null && pictureBox.Tag != null)
+            {
+                respuestaSeleccionadaTemp = pictureBox.Tag.ToString();
+                botonConfirmar.Enabled = true;
+                botonConfirmar.BackColor = System.Drawing.Color.Green;
+                pictureBox_op1.BackColor = System.Drawing.Color.Transparent;
+                pictureBox_op2.BackColor = System.Drawing.Color.Transparent;
+                pictureBox_op3.BackColor = System.Drawing.Color.Transparent;
+                pictureBox_op4.BackColor = System.Drawing.Color.Transparent;
+                pictureBox.BackColor = System.Drawing.Color.LightGreen;
+            }
+        }
+
+        //Método para reproducir audio usando SoundPlayer con WAV
+        private void ReproducirAudio(string rutaAudio)
+        {
+            try
+            {
+                // Detener audio anterior si existe
+                DetenerAudio();
+
+                string rutaCompleta = "";
+                string[] posiblesRutas = {
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
+                    Path.Combine(@"C: tu_ruta", Path.GetFileName(rutaAudio))
+                };
+
+                foreach (string ruta in posiblesRutas)
+                {
+                    if (File.Exists(ruta))
+                    {
+                        rutaCompleta = ruta;
+                        break;
+                    }
+                }
+
+                if (File.Exists(rutaCompleta))
+                {
+                    reproductorActual = new System.Media.SoundPlayer(rutaCompleta);
+                    reproductorActual.Play();
+                }
+                else
+                {
+                    MessageBox.Show("No se encuentra el audio: " + rutaAudio);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reproducir audio: " + ex.Message);
+            }
+        }
+
+        private void btn_audio_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
             if (button != null && button.Tag != null)
             {
-                VerificarRespuestaSeleccionada(button.Tag.ToString() ?? "");
+                ReproducirAudio(button.Tag.ToString());
+                respuestaSeleccionadaTemp = button.Tag.ToString();
+                botonConfirmar.Enabled = true;
+                botonConfirmar.BackColor = System.Drawing.Color.Green;
+                btn_audio1.BackColor = System.Drawing.SystemColors.Control;
+                btn_audio2.BackColor = System.Drawing.SystemColors.Control;
+                btn_audio3.BackColor = System.Drawing.SystemColors.Control;
+                btn_audio4.BackColor = System.Drawing.SystemColors.Control;
+                button.BackColor = System.Drawing.Color.LightGreen;
             }
         }
     }

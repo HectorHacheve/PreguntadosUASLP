@@ -1,4 +1,4 @@
-CREATE DATABASE preguntados_uaslp;
+CREATE DATABASE IF NOT EXISTS preguntados_uaslp;
 USE preguntados_uaslp;
 
 CREATE TABLE categorias (
@@ -57,7 +57,9 @@ INSERT INTO respuestas VALUES
 */
 SELECT * FROM respuestas;
 
+
 -- CINE 
+
 
 -- Preguntas Cine texto
 INSERT INTO preguntas VALUES
@@ -91,7 +93,8 @@ INSERT INTO respuestas VALUES
 INSERT INTO preguntas VALUES
 (305,3,'¿Cuál de estos personajes es de una película de Studio Ghibli?','imagen'),
 (306,3,'¿Cuál de estas estatuillas es el Premio Oscar (Academy Award)?','imagen'),
-(307,3,'¿Qué personaje pertenece a la película "Fantástico Sr. Fox"?','imagen');
+(307,3,'¿Qué personaje pertenece a la película "Fantástico Sr. Fox"?','imagen'),
+(311,3,'¿Cuál de estos personajes es el protagonista de la película El Laberinto del Fauno (2006)?','imagen');
 
 INSERT INTO respuestas VALUES
 (3051,305,'imagenes/Gibby.jpg',FALSE),
@@ -107,32 +110,45 @@ INSERT INTO respuestas VALUES
 (3071,307,'imagenes/Ash.jpg',TRUE),
 (3072,307,'imagenes/Miguel.jpg',FALSE),
 (3073,307,'imagenes/Coraline.jpg',FALSE),
-(3074,307,'imagenes/Violet.jpg',FALSE);
+(3074,307,'imagenes/Violet.jpg',FALSE),
+
+(3111,311,'imagenes/Ofelia.jpg',TRUE),
+(3112,311,'imagenes/El_Fauno.jpg',FALSE),
+(3113,311,'imagenes/El_Pale_Man.jpg',FALSE),
+(3114,311,'imagenes/Capitán_Vidal.jpg',FALSE);
 
 -- Preguntas Cine audio
 INSERT INTO preguntas VALUES
 (308,3,'¿Cuál de estas melodías pertenece a la película Harry Potter?','audio'),
 (309,3,'¿Cuál de estas canciones es la principal del musical El Mago de Oz (1939)?','audio'),
-(310,3,'¿Cuál de estas frases fue dicha por el personaje de Darth Vader en Star Wars?','audio');
+(310,3,'¿Cuál de estas frases fue dicha por el personaje de Darth Vader en Star Wars?','audio'),
+(312,3,'¿Cuál de estas piezas musicales fue compuesta por John Williams para la película Jurassic Park (1993)?','audio');
 
 INSERT INTO respuestas VALUES
--- Harry Potter
+
 (3081,308,'audios/star_wars_theme.wav',FALSE),
 (3082,308,'audios/lord_of_rings_theme.wav',FALSE),
 (3083,308,'audios/hedwig_theme.wav',TRUE),
 (3084,308,'audios/pirates_caribbean.wav',FALSE),
--- El Mago de Oz
+
 (3091,309,'audios/over_the_rainbow.wav',TRUE),
 (3092,309,'audios/be_our_guest.wav',FALSE),
 (3093,309,'audios/whistle_while_you_work.wav',FALSE),
 (3094,309,'audios/spoonful_of_sugar.wav',FALSE),
--- Darth Vader
+
 (3101,310,'audios/may_force_be_with_you.wav',FALSE),
 (3102,310,'audios/i_am_your_father.wav',TRUE),
 (3103,310,'audios/ill_be_back.wav',FALSE),
-(3104,310,'audios/my_precious.wav',FALSE);
+(3104,310,'audios/my_precious.wav',FALSE),
+
+(3121,312,'audios/jurassic_park_theme.wav',TRUE),
+(3122,312,'audios/imperial_march.wav',FALSE),
+(3123,312,'audios/raiders_march.wav',FALSE),
+(3124,312,'audios/schindler_list.wav',FALSE);
+
 
 -- TECNOLOGIA 
+
 
 -- Preguntas Tecnologia texto
 INSERT INTO preguntas VALUES
@@ -166,47 +182,59 @@ INSERT INTO respuestas VALUES
 INSERT INTO preguntas VALUES
 (405,4,'¿Cuál de estos es el logotipo de Linux?','imagen'),
 (406,4,'¿Cuál de estos robots es ASIMO, el robot humanoide desarrollado por Honda que fue presentado en el año 2000?','imagen'),
-(407,4,'¿Cuál de estos dispositivos de almacenamiento fue el primero en popularizarse para uso doméstico en los años 80 y tenía una capacidad típica de 1.44 MB?','imagen');
+(407,4,'¿Cuál de estos dispositivos de almacenamiento fue el primero en popularizarse para uso doméstico en los años 80 y tenía una capacidad típica de 1.44 MB?','imagen'),
+(411,4,'¿Cuál de estos dispositivos fue lanzado por primera vez en 2007 y revolucionó la industria de los teléfonos inteligentes con su pantalla táctil capacitiva?','imagen');
 
 INSERT INTO respuestas VALUES
--- Linux
+
 (4051,405,'imagenes/Windows.jpg',FALSE),
 (4052,405,'imagenes/Android.jpg',FALSE),
 (4053,405,'imagenes/Tux.jpg',TRUE),
 (4054,405,'imagenes/Apple.jpg',FALSE),
--- ASIMO
+
 (4061,406,'imagenes/ASIMO.jpg',TRUE),
 (4062,406,'imagenes/Spot.jpg',FALSE),
 (4063,406,'imagenes/Atlas.jpg',FALSE),
 (4064,406,'imagenes/Pepper.jpg',FALSE),
--- Disquete
+
 (4071,407,'imagenes/Disquete_3.5.jpg',TRUE),
 (4072,407,'imagenes/Cassette.jpg',FALSE),
 (4073,407,'imagenes/CD-ROM.jpg',FALSE),
-(4074,407,'imagenes/USB.jpg',FALSE);
+(4074,407,'imagenes/USB.jpg',FALSE),
+
+(4111,411,'imagenes/iPhone_2007.jpg',TRUE),
+(4112,411,'imagenes/BlackBerry_Curve_2007_2.jpg',FALSE),
+(4113,411,'imagenes/Nokia_N95_2007.jpg',FALSE),
+(4114,411,'imagenes/Palm_Treo_2002.jpg',FALSE);
 
 -- Preguntas Tecnologia audio
 INSERT INTO preguntas VALUES
 (408,4,'¿Cuál de estos audios es el famoso "sonido de error crítico" de Windows XP?','audio'),
 (409,4,'¿Cuál de estos sonidos es el de inicio de Windows 95?','audio'),
-(410,4,'¿Cuál es el sonido de inicio de Nokia?','audio');
+(410,4,'¿Cuál es el sonido de inicio de Nokia?','audio'),
+(412,4,'¿Cuál de estos sonidos corresponde al característico tono de conexión (handshake) de un módem dial-up de los años 90?','audio');
 
 INSERT INTO respuestas VALUES
--- Windows XP error
+
 (4081,408,'audios/glitch_error.wav',FALSE),
 (4082,408,'audios/windows_xp_error.wav',TRUE),
 (4083,408,'audios/mac_error.wav',FALSE),
 (4084,408,'audios/windows_shutdown.wav',FALSE),
--- Windows 95 inicio
+
 (4091,409,'audios/mac_startup.wav',FALSE),
 (4092,409,'audios/windows_95_startup.wav',TRUE),
 (4093,409,'audios/linux_startup.wav',FALSE),
 (4094,409,'audios/windows_shutdown.wav',FALSE),
--- Nokia inicio
+
 (4101,410,'audios/siri_activation.wav',FALSE),
 (4102,410,'audios/intel_logo.wav',FALSE),
 (4103,410,'audios/nokia_startup.wav',TRUE),
-(4104,410,'audios/lg_logo.wav',FALSE);
+(4104,410,'audios/lg_logo.wav',FALSE),
+
+(4121,412,'audios/modem_dialup.wav',TRUE),
+(4122,412,'audios/fax_sound.wav',FALSE),
+(4123,412,'audios/post_beep.wav',FALSE),
+(4124,412,'audios/windows_95_startup.wav',FALSE);
 
 
 CREATE TABLE partidas (
