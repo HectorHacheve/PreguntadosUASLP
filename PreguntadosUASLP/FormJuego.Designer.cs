@@ -57,13 +57,12 @@
             // 
             // label_pregunta
             // 
-            label_pregunta.AutoSize = true;
             label_pregunta.BackColor = Color.Transparent;
             label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pregunta.ForeColor = Color.Transparent;
-            label_pregunta.Location = new Point(481, 135);
+            label_pregunta.Location = new Point(287, 79);
             label_pregunta.Name = "label_pregunta";
-            label_pregunta.Size = new Size(272, 38);
+            label_pregunta.Size = new Size(664, 166);
             label_pregunta.TabIndex = 0;
             label_pregunta.Text = "(Ingresar pregunta)";
             label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
@@ -114,7 +113,7 @@
             btn_audio1.TabIndex = 5;
             btn_audio1.Text = "btn_audio1";
             btn_audio1.UseVisualStyleBackColor = false;
-            btn_audio1.Click += this.btn_audio1_Click;
+            btn_audio1.Click += btn_audio_Click;
             // 
             // btn_audio2
             // 
@@ -127,7 +126,7 @@
             btn_audio2.TabIndex = 6;
             btn_audio2.Text = "btn_audio2";
             btn_audio2.UseVisualStyleBackColor = false;
-            btn_audio2.Click += this.btn_audio2_Click;
+            btn_audio2.Click += btn_audio_Click;
             // 
             // btn_audio4
             // 
@@ -139,7 +138,7 @@
             btn_audio4.TabIndex = 7;
             btn_audio4.Text = "btn_audio4";
             btn_audio4.UseVisualStyleBackColor = false;
-            btn_audio4.Click += btn_audio4_Click;
+            btn_audio4.Click += btn_audio_Click;
             // 
             // btn_audio3
             // 
@@ -151,7 +150,7 @@
             btn_audio3.TabIndex = 8;
             btn_audio3.Text = "btn_audio3";
             btn_audio3.UseVisualStyleBackColor = false;
-            btn_audio3.Click += this.btn_audio3_Click;
+            btn_audio3.Click += btn_audio_Click;
             // 
             // label_placeholder3
             // 
@@ -257,7 +256,7 @@
             pictureBox_cat1.BackColor = Color.Transparent;
             pictureBox_cat1.Location = new Point(12, 68);
             pictureBox_cat1.Name = "pictureBox_cat1";
-            pictureBox_cat1.Size = new Size(211, 189);
+            pictureBox_cat1.Size = new Size(239, 194);
             pictureBox_cat1.TabIndex = 18;
             pictureBox_cat1.TabStop = false;
             // 
@@ -283,7 +282,6 @@
             Controls.Add(label02);
             Controls.Add(pictureBox_cat1);
             Controls.Add(pictureBox_cat2);
-            Controls.Add(label_pregunta);
             Controls.Add(label_placeholder3);
             Controls.Add(label_placeholder1);
             Controls.Add(label_placeholder4);
@@ -298,6 +296,7 @@
             Controls.Add(btn_audio2);
             Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op4);
+            Controls.Add(label_pregunta);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;
