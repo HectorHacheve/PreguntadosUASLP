@@ -1,10 +1,11 @@
 ﻿#nullable disable
+using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace PreguntadosUASLP
 {
@@ -569,7 +570,6 @@ namespace PreguntadosUASLP
             else
             {
                 preguntasFalladas++;
-
             }
             GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
