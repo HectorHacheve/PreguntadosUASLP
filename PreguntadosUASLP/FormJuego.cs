@@ -375,10 +375,10 @@ namespace PreguntadosUASLP
                         btn_audio3.Tag = respuestas[2];
                         btn_audio4.Tag = respuestas[3];
 
-                        btn_audio1.Text = "🔊 Audio 1";
-                        btn_audio2.Text = "🔊 Audio 2";
-                        btn_audio3.Text = "🔊 Audio 3";
-                        btn_audio4.Text = "🔊 Audio 4";
+                        btn_audio1.Text = "Audio 1";
+                        btn_audio2.Text = "Audio 2";
+                        btn_audio3.Text = "Audio 3";
+                        btn_audio4.Text = "Audio 4";
 
                         // Limpiar selección anterior
                         pb_seleccionado = null;
