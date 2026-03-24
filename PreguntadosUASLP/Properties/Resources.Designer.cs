@@ -173,6 +173,16 @@ namespace PreguntadosUASLP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap hashtag {
+            get {
+                object obj = ResourceManager.GetObject("hashtag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap imagenes {
             get {
                 object obj = ResourceManager.GetObject("imagenes", resourceCulture);
@@ -196,6 +206,16 @@ namespace PreguntadosUASLP.Properties {
         public static System.Drawing.Bitmap opciones {
             get {
                 object obj = ResourceManager.GetObject("opciones", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pregunta {
+            get {
+                object obj = ResourceManager.GetObject("pregunta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

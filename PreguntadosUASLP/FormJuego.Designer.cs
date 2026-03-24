@@ -59,12 +59,11 @@
             // 
             label_pregunta.AutoSize = true;
             label_pregunta.BackColor = Color.Transparent;
-            label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_pregunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pregunta.ForeColor = Color.White;
-            label_pregunta.Location = new Point(282, 0);
+            label_pregunta.Location = new Point(260, 70);
             label_pregunta.MaximumSize = new Size(700, 0);
             label_pregunta.Name = "label_pregunta";
-            label_pregunta.Size = new Size(272, 38);
             label_pregunta.TabIndex = 0;
             label_pregunta.Text = "(Ingresar pregunta)";
             label_pregunta.TextAlign = ContentAlignment.MiddleCenter;

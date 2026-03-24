@@ -157,6 +157,13 @@ namespace PreguntadosUASLP
                 pictureBox_cat2.Image = Properties.Resources.futbol;
                 pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
             }
+            else if (categoria == "Cultura_pop")
+            {
+                pictureBox_cat1.Image = Properties.Resources.hashtag;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.pregunta;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private int ObtenerTotalPreguntasBD()
