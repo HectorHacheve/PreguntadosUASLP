@@ -61,7 +61,8 @@ namespace PreguntadosUASLP
             string rutaBtn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "newBtn.png");
             if (File.Exists(rutaBtn))
                 imgBoton = Image.FromFile(rutaBtn);
-            label_placeholder1.Text = ObtenerNombreCategoria();
+            label_placeholder1.Tag = ObtenerNombreCategoria();
+            label_placeholder1.Invalidate();
             pb_placeholder3.Invalidate();
             ActualizarNumeroPregunta();
             ImagenCategoria();
@@ -70,7 +71,8 @@ namespace PreguntadosUASLP
 
         private void ActualizarNumeroPregunta()
         {
-            label_placeholder2.Text = "Pregunta " + (preguntasRespondidas + 1) + "/" + totalPreguntas;
+            label_placeholder2.Tag = "Pregunta " + (preguntasRespondidas + 1) + "/" + totalPreguntas;
+            label_placeholder2.Invalidate();
         }
 
         private string ObtenerNombreCategoria()
@@ -85,7 +87,8 @@ namespace PreguntadosUASLP
                     cmd.Parameters.AddWithValue("@id", categoriaId);
                     object resultado = cmd.ExecuteScalar();
                     categoria = resultado != null ? resultado.ToString() : "Sin categoría";
-                    return categoria;
+                    string nombreDisplay = categoria.Replace("_", " ");
+                    return nombreDisplay;
                 }
                 catch (Exception)
                 {
@@ -212,6 +215,32 @@ namespace PreguntadosUASLP
             formato.LineAlignment = StringAlignment.Center;
             e.Graphics.DrawString(texto, fuente, Brushes.DarkSlateBlue,
                 ((PictureBox)sender).ClientRectangle, formato);
+        }
+
+        private void label_placeholder1_Paint(object sender, PaintEventArgs e)
+        {
+            string texto = label_placeholder1.Tag?.ToString() ?? "";
+            Font fuente = new Font("Impact", 13.8F, FontStyle.Regular);
+            StringFormat sf = new StringFormat
+            {
+                Alignment = StringAlignment.Near,
+                LineAlignment = StringAlignment.Center
+            };
+            e.Graphics.DrawString(texto, fuente, Brushes.WhiteSmoke,
+                ((PictureBox)sender).ClientRectangle, sf);
+        }
+
+        private void label_placeholder2_Paint(object sender, PaintEventArgs e)
+        {
+            string texto = label_placeholder2.Tag?.ToString() ?? "";
+            Font fuente = new Font("Impact", 13.8F, FontStyle.Regular);
+            StringFormat sf = new StringFormat
+            {
+                Alignment = StringAlignment.Far,
+                LineAlignment = StringAlignment.Center
+            };
+            e.Graphics.DrawString(texto, fuente, Brushes.WhiteSmoke,
+                ((PictureBox)sender).ClientRectangle, sf);
         }
 
         private int ObtenerTotalPreguntasBD()
