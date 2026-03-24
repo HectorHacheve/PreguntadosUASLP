@@ -107,7 +107,7 @@ namespace PreguntadosUASLP
             }
         }
 
-        private void AjustarFuentePregunta(string texto)
+        private void AjustarPregunta(string texto)
         {
             int espacioDisponible = this.ClientSize.Width - 100; // 100 = donde termina el PictureBox
             label_pregunta.Left = 100 + (espacioDisponible - label_pregunta.Width) / 2;
@@ -240,7 +240,7 @@ namespace PreguntadosUASLP
                         preguntasUsadas.Add(idPreguntaActual);
 
                         label_pregunta.Text = reader["pregunta"] != null ? reader["pregunta"].ToString() : "";
-                        AjustarFuentePregunta(label_pregunta.Text);
+                        AjustarPregunta(label_pregunta.Text);
 
                         string tipoPregunta = reader["tipo"] != null ? reader["tipo"].ToString() : "texto";
 
