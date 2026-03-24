@@ -209,10 +209,6 @@ namespace PreguntadosUASLP
                     VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
                     respuestaSeleccionadaTemp = "";
                 }
-                else
-                {
-                    MessageBox.Show("Selecciona una respuesta primero");
-                }
             }
         }
         private void pb_puntaje_Paint(object sender, PaintEventArgs e)
@@ -294,7 +290,6 @@ namespace PreguntadosUASLP
 
             if (totalBD == 0)
             {
-                MessageBox.Show("No hay preguntas en esta categoría");
                 this.Close();
                 return;
             }
@@ -309,14 +304,12 @@ namespace PreguntadosUASLP
 
             if (preguntasUsadas.Count >= totalBD)
             {
-                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + preguntasRespondidas);
                 this.Close();
                 return;
             }
 
             if (preguntasRespondidas >= totalPreguntas)
             {
-                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + totalPreguntas);
                 this.Close();
                 return;
             }
@@ -362,13 +355,11 @@ namespace PreguntadosUASLP
                     }
                     else
                     {
-                        MessageBox.Show("No hay más preguntas disponibles");
                         this.Close();
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error BD: " + ex.Message);
                 }
             }
         }
@@ -457,7 +448,6 @@ namespace PreguntadosUASLP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error respuestas: " + ex.Message);
             }
         }
 
@@ -575,12 +565,11 @@ namespace PreguntadosUASLP
             if (respuestaSeleccionada == respuestaCorrectaTexto)
             {
                 puntuacion++;
-                MessageBox.Show("Correcto!");
             }
             else
             {
                 preguntasFalladas++;
-                MessageBox.Show("Incorrecto!");
+
             }
             GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
@@ -668,12 +657,10 @@ namespace PreguntadosUASLP
                 }
                 else
                 {
-                    MessageBox.Show("No se encuentra el audio: " + rutaAudio);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al reproducir audio: " + ex.Message);
             }
         }
 
@@ -741,7 +728,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al crear partida: " + ex.Message);
                 }
             }
         }
@@ -767,7 +753,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al guardar respuesta: " + ex.Message);
                 }
             }
         }
@@ -794,7 +779,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al actualizar partida: " + ex.Message);
                 }
             }
         }
