@@ -130,14 +130,6 @@ namespace PreguntadosUASLP
 
             g.DrawString(texto, fuente, Brushes.White, pb.ClientRectangle, sf);
         }
-        private void AjustarPregunta(string texto)
-        {
-            int espacioDisponible = this.ClientSize.Width - 100; // 100 = donde termina el PictureBox
-            label_pregunta.Left = 100 + (espacioDisponible - label_pregunta.Width) / 2;
-            int areaTop = 50;
-            int areaBottom = 260;
-            label_pregunta.Top = areaTop + (areaBottom - areaTop - label_pregunta.Height) / 2;
-        }
         private void ImagenCategoria()
         {
             if (categoria == "UASLP")
@@ -209,12 +201,31 @@ namespace PreguntadosUASLP
         private void pb_puntaje_Paint(object sender, PaintEventArgs e)
         {
             string texto = "Puntaje:  ✅ " + puntuacion + "  |  " + " ❌ " + preguntasFalladas;
-            Font fuente = new Font("Impact", 14, FontStyle.Regular);
+            Font fuente = new Font("Impact", 16, FontStyle.Regular);
             StringFormat formato = new StringFormat();
             formato.Alignment = StringAlignment.Center;
             formato.LineAlignment = StringAlignment.Center;
             e.Graphics.DrawString(texto, fuente, Brushes.DarkSlateBlue,
                 ((PictureBox)sender).ClientRectangle, formato);
+        }
+
+        private void label_pregunta_Paint(object sender, PaintEventArgs e)
+        {
+            string texto = label_pregunta.Tag?.ToString() ?? "";
+            Font fuente = new Font("Segoe UI", 16F, FontStyle.Bold);
+            StringFormat sf = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            using (SolidBrush sombra = new SolidBrush(Color.FromArgb(100, Color.Black)))
+            {
+                RectangleF rectSombra = new RectangleF(1.5f, 1.5f, label_pregunta.Width, label_pregunta.Height);
+                e.Graphics.DrawString(texto, fuente, sombra, rectSombra, sf);
+            }
+
+            e.Graphics.DrawString(texto, fuente, Brushes.White, label_pregunta.ClientRectangle, sf);
         }
 
         private void label_placeholder1_Paint(object sender, PaintEventArgs e)
@@ -312,8 +323,8 @@ namespace PreguntadosUASLP
                         idPreguntaActual = Convert.ToInt32(reader["id_pregunta"]);
                         preguntasUsadas.Add(idPreguntaActual);
 
-                        label_pregunta.Text = reader["pregunta"] != null ? reader["pregunta"].ToString() : "";
-                        AjustarPregunta(label_pregunta.Text);
+                        label_pregunta.Tag = reader["pregunta"] != null ? reader["pregunta"].ToString() : "";
+                        label_pregunta.Invalidate();
 
                         string tipoPregunta = reader["tipo"] != null ? reader["tipo"].ToString() : "texto";
 

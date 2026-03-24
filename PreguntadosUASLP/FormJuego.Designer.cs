@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label_pregunta = new Label();
+            label_pregunta = new PictureBox();
             label_placeholder2 = new PictureBox();
             label_placeholder1 = new PictureBox();
             btn_audio1 = new PictureBox();
@@ -46,6 +46,7 @@
             pb_op04 = new PictureBox();
             pictureBox_cat1 = new PictureBox();
             pictureBox_cat2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)label_pregunta).BeginInit();
             ((System.ComponentModel.ISupportInitialize)label_placeholder2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)label_placeholder1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_audio1).BeginInit();
@@ -67,18 +68,14 @@
             // 
             // label_pregunta
             // 
-            label_pregunta.AutoSize = true;
             label_pregunta.BackColor = Color.Transparent;
-            label_pregunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_pregunta.ForeColor = Color.White;
-            label_pregunta.Location = new Point(257, 94);
-            label_pregunta.MaximumSize = new Size(700, 0);
+            label_pregunta.Location = new Point(257, 68);
             label_pregunta.Name = "label_pregunta";
-            label_pregunta.Size = new Size(268, 37);
+            label_pregunta.Size = new Size(700, 180);
             label_pregunta.TabIndex = 0;
-            label_pregunta.Text = "(Ingresar pregunta)";
-            label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
-            label_pregunta.Click += label_pregunta_Click;
+            label_pregunta.TabStop = false;
+            label_pregunta.Tag = "(Ingresar pregunta)";
+            label_pregunta.Paint += label_pregunta_Paint;
             // 
             // label_placeholder2
             // 
@@ -149,9 +146,9 @@
             // pb_placeholder3
             // 
             pb_placeholder3.BackColor = Color.Transparent;
-            pb_placeholder3.Location = new Point(479, 601);
+            pb_placeholder3.Location = new Point(478, 623);
             pb_placeholder3.Name = "pb_placeholder3";
-            pb_placeholder3.Size = new Size(250, 40);
+            pb_placeholder3.Size = new Size(250, 60);
             pb_placeholder3.TabIndex = 9;
             pb_placeholder3.TabStop = false;
             pb_placeholder3.Paint += pb_puntaje_Paint;
@@ -304,6 +301,7 @@
             Text = "Preguntados UASLP";
             Load += FormJuego_Load;
             KeyDown += FormJuego_Confirmar;
+            ((System.ComponentModel.ISupportInitialize)label_pregunta).EndInit();
             ((System.ComponentModel.ISupportInitialize)label_placeholder2).EndInit();
             ((System.ComponentModel.ISupportInitialize)label_placeholder1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_audio1).EndInit();
@@ -322,12 +320,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label_pregunta;
+        private PictureBox label_pregunta;
         private PictureBox label_placeholder1; //categoria
         private PictureBox label_placeholder2; //num de pregunta
         private PictureBox pb_placeholder3; //puntaje
