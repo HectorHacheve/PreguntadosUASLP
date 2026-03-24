@@ -24,16 +24,13 @@ namespace PreguntadosUASLP
         string respuestaSeleccionadaTemp = "";
         ////Variable para controlar la reproducción de audio y poder detenerlo
         System.Media.SoundPlayer reproductorActual = null;
+        Image imgBoton = Properties.Resources.newBtn;
+        PictureBox pb_seleccionado = null;
 
         public FormJuego(int categoriaRecibida)
         {
             InitializeComponent();
             categoriaId = categoriaRecibida;
-
-            label01.Click += label01_Click;
-            label02.Click += label02_Click;
-            label03.Click += label03_Click;
-            label04.Click += label04_Click;
 
             btn_audio1.Click += btn_audio_Click;
             btn_audio2.Click += btn_audio_Click;
@@ -61,8 +58,11 @@ namespace PreguntadosUASLP
 
         private void FormJuego_Load(object sender, EventArgs e)
         {
+            string rutaBtn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "newBtn.png");
+            if (File.Exists(rutaBtn))
+                imgBoton = Image.FromFile(rutaBtn);
             label_placeholder1.Text = ObtenerNombreCategoria();
-            label_placeholder3.Invalidate();
+            pb_placeholder3.Invalidate();
             ActualizarNumeroPregunta();
             ImagenCategoria();
             CargarSiguientePregunta();
@@ -94,6 +94,32 @@ namespace PreguntadosUASLP
             }
         }
 
+        private void pb_opcion_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            if (imgBoton != null)
+                g.DrawImage(imgBoton, pb.ClientRectangle);
+            else
+                g.FillRectangle(Brushes.Lavender, pb.ClientRectangle);
+
+            if (pb == pb_seleccionado)
+            {
+                using (SolidBrush tinte = new SolidBrush(Color.FromArgb(120, Color.LightGreen)))
+                    g.FillRectangle(tinte, pb.ClientRectangle);
+                using (Pen borde = new Pen(Color.Green, 3))
+                    g.DrawRectangle(borde, 1, 1, pb.Width - 3, pb.Height - 3);
+            }
+
+            string texto = pb.Text ?? "";
+            Font fuente = new Font("Segoe UI", 14, FontStyle.Bold);
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+            g.DrawString(texto, fuente, Brushes.White, pb.ClientRectangle, sf);
+        }
         private void AjustarPregunta(string texto)
         {
             int espacioDisponible = this.ClientSize.Width - 100; // 100 = donde termina el PictureBox
@@ -324,28 +350,16 @@ namespace PreguntadosUASLP
                         pictureBox_op3.Click += pictureBox_Click;
                         pictureBox_op4.Click += pictureBox_Click;
                     }
+
                     else if (tipoPregunta == "texto")
                     {
-                        label01.Text = respuestas[0];
-                        label02.Text = respuestas[1];
-                        label03.Text = respuestas[2];
-                        label04.Text = respuestas[3];
-
-                        label01.AutoSize = false;
-                        label01.Size = new System.Drawing.Size(351, 141);
-                        label01.TextAlign = ContentAlignment.MiddleCenter;
-
-                        label02.AutoSize = false;
-                        label02.Size = new System.Drawing.Size(351, 141);
-                        label02.TextAlign = ContentAlignment.MiddleCenter;
-
-                        label03.AutoSize = false;
-                        label03.Size = new System.Drawing.Size(351, 141);
-                        label03.TextAlign = ContentAlignment.MiddleCenter;
-
-                        label04.AutoSize = false;
-                        label04.Size = new System.Drawing.Size(351, 141);
-                        label04.TextAlign = ContentAlignment.MiddleCenter;
+                        pb_op01.Text = respuestas[0];
+                        pb_op02.Text = respuestas[1];
+                        pb_op03.Text = respuestas[2];
+                        pb_op04.Text = respuestas[3];
+                        pb_seleccionado = null;
+                        pb_op01.Invalidate(); pb_op02.Invalidate();
+                        pb_op03.Invalidate(); pb_op04.Invalidate();
                     }
                     else if (tipoPregunta == "audio")
                     {
@@ -407,10 +421,6 @@ namespace PreguntadosUASLP
 
         private void MostrarTipoPregunta(string tipo)
         {
-            label01.BackColor = System.Drawing.Color.Lavender;
-            label02.BackColor = System.Drawing.Color.Lavender;
-            label03.BackColor = System.Drawing.Color.Lavender;
-            label04.BackColor = System.Drawing.Color.Lavender;
             pictureBox_op1.BackColor = System.Drawing.Color.Transparent;
             pictureBox_op2.BackColor = System.Drawing.Color.Transparent;
             pictureBox_op3.BackColor = System.Drawing.Color.Transparent;
@@ -420,10 +430,10 @@ namespace PreguntadosUASLP
             btn_audio3.BackColor = System.Drawing.SystemColors.Control;
             btn_audio4.BackColor = System.Drawing.SystemColors.Control;
 
-            label01.Visible = false;
-            label02.Visible = false;
-            label03.Visible = false;
-            label04.Visible = false;
+            pb_op01.Visible = false; 
+            pb_op02.Visible = false;
+            pb_op03.Visible = false; 
+            pb_op04.Visible = false;
             btn_audio1.Visible = false;
             btn_audio2.Visible = false;
             btn_audio3.Visible = false;
@@ -435,10 +445,10 @@ namespace PreguntadosUASLP
 
             if (tipo == "texto")
             {
-                label01.Visible = true;
-                label02.Visible = true;
-                label03.Visible = true;
-                label04.Visible = true;
+                pb_op01.Visible = true;
+                pb_op02.Visible = true;
+                pb_op03.Visible = true;
+                pb_op04.Visible = true;
             }
             else if (tipo == "imagen")
             {
@@ -470,52 +480,43 @@ namespace PreguntadosUASLP
             }
 
             preguntasRespondidas++;
-            label_placeholder3.Invalidate();
+            pb_placeholder3.Invalidate();
             CargarSiguientePregunta();
         }
-
-
-        private void label01_Click(object sender, EventArgs e)
+        private void pb_op1_Click(object sender, EventArgs e)
         {
-            respuestaSeleccionadaTemp = label01.Text;
-            label01.BackColor = System.Drawing.Color.LightGreen;
-            label02.BackColor = System.Drawing.Color.Lavender;
-            label03.BackColor = System.Drawing.Color.Lavender;
-            label04.BackColor = System.Drawing.Color.Lavender;
+            respuestaSeleccionadaTemp = pb_op01.Text;
+            pb_seleccionado = pb_op01;
+            pb_op01.Invalidate(); pb_op02.Invalidate();
+            pb_op03.Invalidate(); pb_op04.Invalidate();
             this.ActiveControl = null;
-
         }
-
-        private void label02_Click(object sender, EventArgs e)
+        private void pb_op02_Click(object sender, EventArgs e)
         {
-            respuestaSeleccionadaTemp = label02.Text;
-            label01.BackColor = System.Drawing.Color.Lavender;
-            label02.BackColor = System.Drawing.Color.LightGreen;
-            label03.BackColor = System.Drawing.Color.Lavender;
-            label04.BackColor = System.Drawing.Color.Lavender;
+            respuestaSeleccionadaTemp = pb_op02.Text;
+            pb_seleccionado = pb_op02;
+            pb_op01.Invalidate(); pb_op02.Invalidate();
+            pb_op03.Invalidate(); pb_op04.Invalidate();
             this.ActiveControl = null;
         }
 
-        private void label03_Click(object sender, EventArgs e)
+        private void pb_op3_Click(object sender, EventArgs e)
         {
-            respuestaSeleccionadaTemp = label03.Text;
-            label01.BackColor = System.Drawing.Color.Lavender;
-            label02.BackColor = System.Drawing.Color.Lavender;
-            label03.BackColor = System.Drawing.Color.LightGreen;
-            label04.BackColor = System.Drawing.Color.Lavender;
+            respuestaSeleccionadaTemp = pb_op03.Text;
+            pb_seleccionado = pb_op03;
+            pb_op01.Invalidate(); pb_op02.Invalidate();
+            pb_op03.Invalidate(); pb_op04.Invalidate();
             this.ActiveControl = null;
         }
 
-        private void label04_Click(object sender, EventArgs e)
+        private void pb_op4_Click(object sender, EventArgs e)
         {
-            respuestaSeleccionadaTemp = label04.Text;
-            label01.BackColor = System.Drawing.Color.Lavender;
-            label02.BackColor = System.Drawing.Color.Lavender;
-            label03.BackColor = System.Drawing.Color.Lavender;
-            label04.BackColor = System.Drawing.Color.LightGreen;
+            respuestaSeleccionadaTemp = pb_op04.Text;
+            pb_seleccionado = pb_op04;
+            pb_op01.Invalidate(); pb_op02.Invalidate();
+            pb_op03.Invalidate(); pb_op04.Invalidate();
             this.ActiveControl = null;
         }
-
         private void pictureBox_Click(object sender, EventArgs e)
         {
             PictureBox pictureBox = sender as PictureBox;

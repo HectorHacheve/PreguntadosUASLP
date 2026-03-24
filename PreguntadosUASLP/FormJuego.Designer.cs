@@ -30,28 +30,31 @@
         {
             label_pregunta = new Label();
             label_placeholder2 = new Label();
-            label_placeholder4 = new Label();
             label_placeholder1 = new Label();
             btn_audio1 = new Button();
             btn_audio2 = new Button();
             btn_audio4 = new Button();
             btn_audio3 = new Button();
-            label_placeholder3 = new PictureBox();
+            pb_placeholder3 = new PictureBox();
             pictureBox_op1 = new PictureBox();
             pictureBox_op2 = new PictureBox();
             pictureBox_op3 = new PictureBox();
             pictureBox_op4 = new PictureBox();
-            label01 = new Label();
-            label02 = new Label();
-            label03 = new Label();
-            label04 = new Label();
+            pb_op01 = new PictureBox();
+            pb_op02 = new PictureBox();
+            pb_op03 = new PictureBox();
+            pb_op04 = new PictureBox();
             pictureBox_cat1 = new PictureBox();
             pictureBox_cat2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)label_placeholder3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_placeholder3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op01).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op02).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op03).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op04).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat2).BeginInit();
             SuspendLayout();
@@ -82,17 +85,6 @@
             label_placeholder2.Size = new Size(187, 28);
             label_placeholder2.TabIndex = 2;
             label_placeholder2.Text = "(num de pregunta)";
-            // 
-            // label_placeholder4
-            // 
-            label_placeholder4.AutoSize = true;
-            label_placeholder4.BackColor = Color.Lavender;
-            label_placeholder4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_placeholder4.Location = new Point(498, 656);
-            label_placeholder4.Name = "label_placeholder4";
-            label_placeholder4.Size = new Size(242, 23);
-            label_placeholder4.TabIndex = 3;
-            label_placeholder4.Text = "(btn para sig. pregunta)";
             // 
             // label_placeholder1
             // 
@@ -155,15 +147,15 @@
             btn_audio3.UseVisualStyleBackColor = false;
             btn_audio3.Click += btn_audio_Click;
             // 
-            // label_placeholder3
+            // pb_placeholder3
             // 
-            label_placeholder3.BackColor = Color.Transparent;
-            label_placeholder3.Location = new Point(490, 599);
-            label_placeholder3.Name = "label_placeholder3";
-            label_placeholder3.Size = new Size(250, 40);
-            label_placeholder3.TabIndex = 9;
-            label_placeholder3.TabStop = false;
-            label_placeholder3.Paint += pb_puntaje_Paint;
+            pb_placeholder3.BackColor = Color.Transparent;
+            pb_placeholder3.Location = new Point(490, 599);
+            pb_placeholder3.Name = "pb_placeholder3";
+            pb_placeholder3.Size = new Size(250, 40);
+            pb_placeholder3.TabIndex = 9;
+            pb_placeholder3.TabStop = false;
+            pb_placeholder3.Paint += pb_puntaje_Paint;
             // 
             // pictureBox_op1
             // 
@@ -205,50 +197,61 @@
             pictureBox_op4.TabStop = false;
             pictureBox_op4.BackgroundImageLayoutChanged += FormJuego_Load;
             // 
-            // label01
+            // pb_op01
             // 
-            label01.BackColor = Color.Lavender;
-            label01.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label01.Location = new Point(255, 268);
-            label01.Name = "label01";
-            label01.Size = new Size(351, 141);
-            label01.TabIndex = 14;
-            label01.Text = "label01";
-            label01.TextAlign = ContentAlignment.MiddleCenter;
-            label01.Click += label01_Click_1;
+            pb_op01.BackColor = Color.Transparent;
+            pb_op01.Image = Properties.Resources.newBtn;
+            pb_op01.Location = new Point(255, 268);
+            pb_op01.Name = "pb_op01";
+            pb_op01.Size = new Size(351, 141);
+            pb_op01.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_op01.TabIndex = 14;
+            pb_op01.TabStop = false;
+            pb_op01.Tag = "";
+            pb_op01.Click += pb_op1_Click;
+            pb_op01.Paint += pb_opcion_Paint;
             // 
-            // label02
+            // pb_op02
             // 
-            label02.BackColor = Color.Lavender;
-            label02.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label02.Location = new Point(623, 268);
-            label02.Name = "label02";
-            label02.Size = new Size(351, 141);
-            label02.TabIndex = 15;
-            label02.Text = "label02";
-            label02.TextAlign = ContentAlignment.MiddleCenter;
+            pb_op02.BackColor = Color.Transparent;
+            pb_op02.Image = Properties.Resources.newBtn;
+            pb_op02.Location = new Point(623, 268);
+            pb_op02.Name = "pb_op02";
+            pb_op02.Size = new Size(351, 141);
+            pb_op02.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_op02.TabIndex = 15;
+            pb_op02.TabStop = false;
+            pb_op02.Tag = "";
+            pb_op02.Click += pb_op02_Click;
+            pb_op02.Paint += pb_opcion_Paint;
             // 
-            // label03
+            // pb_op03
             // 
-            label03.BackColor = Color.Lavender;
-            label03.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label03.Location = new Point(255, 424);
-            label03.Name = "label03";
-            label03.Size = new Size(351, 141);
-            label03.TabIndex = 16;
-            label03.Text = "label03";
-            label03.TextAlign = ContentAlignment.MiddleCenter;
+            pb_op03.BackColor = Color.Transparent;
+            pb_op03.Image = Properties.Resources.newBtn;
+            pb_op03.Location = new Point(255, 424);
+            pb_op03.Name = "pb_op03";
+            pb_op03.Size = new Size(351, 141);
+            pb_op03.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_op03.TabIndex = 16;
+            pb_op03.TabStop = false;
+            pb_op03.Tag = "";
+            pb_op03.Click += pb_op3_Click;
+            pb_op03.Paint += pb_opcion_Paint;
             // 
-            // label04
+            // pb_op04
             // 
-            label04.BackColor = Color.Lavender;
-            label04.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label04.Location = new Point(623, 424);
-            label04.Name = "label04";
-            label04.Size = new Size(351, 141);
-            label04.TabIndex = 17;
-            label04.Text = "label04";
-            label04.TextAlign = ContentAlignment.MiddleCenter;
+            pb_op04.BackColor = Color.Transparent;
+            pb_op04.Image = Properties.Resources.newBtn;
+            pb_op04.Location = new Point(623, 424);
+            pb_op04.Name = "pb_op04";
+            pb_op04.Size = new Size(351, 141);
+            pb_op04.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_op04.TabIndex = 17;
+            pb_op04.TabStop = false;
+            pb_op04.Tag = "";
+            pb_op04.Click += pb_op4_Click;
+            pb_op04.Paint += pb_opcion_Paint;
             // 
             // pictureBox_cat1
             // 
@@ -271,8 +274,6 @@
             // 
             // FormJuego
             // 
-            this.KeyPreview = true;
-            this.KeyDown += FormJuego_Confirmar;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateBlue;
@@ -281,15 +282,14 @@
             ClientSize = new Size(1179, 775);
             Controls.Add(pictureBox_cat1);
             Controls.Add(label_pregunta);
-            Controls.Add(label04);
-            Controls.Add(label02);
+            Controls.Add(pb_op04);
+            Controls.Add(pb_op02);
             Controls.Add(pictureBox_cat2);
-            Controls.Add(label_placeholder3);
+            Controls.Add(pb_placeholder3);
             Controls.Add(label_placeholder1);
-            Controls.Add(label_placeholder4);
             Controls.Add(label_placeholder2);
-            Controls.Add(label03);
-            Controls.Add(label01);
+            Controls.Add(pb_op03);
+            Controls.Add(pb_op01);
             Controls.Add(btn_audio3);
             Controls.Add(btn_audio4);
             Controls.Add(btn_audio1);
@@ -299,15 +299,21 @@
             Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op4);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Preguntados UASLP";
             Load += FormJuego_Load;
-            ((System.ComponentModel.ISupportInitialize)label_placeholder3).EndInit();
+            KeyDown += FormJuego_Confirmar;
+            ((System.ComponentModel.ISupportInitialize)pb_placeholder3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_op4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op01).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op02).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op03).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pb_op04).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_cat2).EndInit();
             ResumeLayout(false);
@@ -319,12 +325,11 @@
         private Label label_pregunta;
         private Label label_placeholder1; //categoria
         private Label label_placeholder2; //num de pregunta
-        private PictureBox label_placeholder3; //puntaje
-        private Label label_placeholder4; //btn para siguiente pregunta
-        private Label label01;
-        private Label label02;
-        private Label label03;
-        private Label label04;
+        private PictureBox pb_placeholder3; //puntaje
+        private PictureBox pb_op01;
+        private PictureBox pb_op02;
+        private PictureBox pb_op03;
+        private PictureBox pb_op04;
         private Button btn_audio1;
         private Button btn_audio2;
         private Button btn_audio4;
