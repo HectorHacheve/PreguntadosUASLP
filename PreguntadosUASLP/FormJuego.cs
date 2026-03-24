@@ -22,7 +22,6 @@ namespace PreguntadosUASLP
         int totalPreguntas = 12;
         List<int> preguntasUsadas = new List<int>();
         string respuestaSeleccionadaTemp = "";
-        Button botonConfirmar;
         ////Variable para controlar la reproducción de audio y poder detenerlo
         System.Media.SoundPlayer reproductorActual = null;
 
@@ -40,19 +39,6 @@ namespace PreguntadosUASLP
             btn_audio2.Click += btn_audio_Click;
             btn_audio3.Click += btn_audio_Click;
             btn_audio4.Click += btn_audio_Click;
-
-            //Crear boton de confirmar y ajustar posición más abajo
-            botonConfirmar = new Button();
-            botonConfirmar.Text = "Confirmar respuesta";
-            botonConfirmar.Size = new System.Drawing.Size(300, 50);
-            botonConfirmar.Location = new System.Drawing.Point(100, 800); // Posición más abajo
-            botonConfirmar.BackColor = System.Drawing.Color.Gold;
-            botonConfirmar.Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
-            botonConfirmar.Click += BotonConfirmar_Click;
-            botonConfirmar.Enabled = false;
-            botonConfirmar.BackColor = System.Drawing.Color.Gray;
-            this.Controls.Add(botonConfirmar);
-            botonConfirmar.BringToFront();
         }
 
         //Detener audio al cerrar el formulario
@@ -168,7 +154,22 @@ namespace PreguntadosUASLP
                 pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
-
+        private void FormJuego_Confirmar(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(respuestaSeleccionadaTemp))
+                {
+                    DetenerAudio();
+                    VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
+                    respuestaSeleccionadaTemp = "";
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona una respuesta primero");
+                }
+            }
+        }
         private void pb_puntaje_Paint(object sender, PaintEventArgs e)
         {
             string texto = "Puntaje:  ✅ " + puntuacion + "  |  " + " ❌ " + preguntasFalladas;
@@ -222,8 +223,6 @@ namespace PreguntadosUASLP
             }
 
             respuestaSeleccionadaTemp = "";
-            botonConfirmar.Enabled = false;
-            botonConfirmar.BackColor = System.Drawing.Color.Gray;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -475,65 +474,46 @@ namespace PreguntadosUASLP
             CargarSiguientePregunta();
         }
 
-        private void BotonConfirmar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(respuestaSeleccionadaTemp))
-            {
-                //Detener audio al confirmar respuesta
-                DetenerAudio();
-                VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
-                respuestaSeleccionadaTemp = "";
-                botonConfirmar.Enabled = false;
-                botonConfirmar.BackColor = System.Drawing.Color.Gray;
-            }
-            else
-            {
-                MessageBox.Show("Selecciona una respuesta primero");
-            }
-        }
 
         private void label01_Click(object sender, EventArgs e)
         {
             respuestaSeleccionadaTemp = label01.Text;
-            botonConfirmar.Enabled = true;
-            botonConfirmar.BackColor = System.Drawing.Color.Green;
             label01.BackColor = System.Drawing.Color.LightGreen;
             label02.BackColor = System.Drawing.Color.Lavender;
             label03.BackColor = System.Drawing.Color.Lavender;
             label04.BackColor = System.Drawing.Color.Lavender;
+            this.ActiveControl = null;
+
         }
 
         private void label02_Click(object sender, EventArgs e)
         {
             respuestaSeleccionadaTemp = label02.Text;
-            botonConfirmar.Enabled = true;
-            botonConfirmar.BackColor = System.Drawing.Color.Green;
             label01.BackColor = System.Drawing.Color.Lavender;
             label02.BackColor = System.Drawing.Color.LightGreen;
             label03.BackColor = System.Drawing.Color.Lavender;
             label04.BackColor = System.Drawing.Color.Lavender;
+            this.ActiveControl = null;
         }
 
         private void label03_Click(object sender, EventArgs e)
         {
             respuestaSeleccionadaTemp = label03.Text;
-            botonConfirmar.Enabled = true;
-            botonConfirmar.BackColor = System.Drawing.Color.Green;
             label01.BackColor = System.Drawing.Color.Lavender;
             label02.BackColor = System.Drawing.Color.Lavender;
             label03.BackColor = System.Drawing.Color.LightGreen;
             label04.BackColor = System.Drawing.Color.Lavender;
+            this.ActiveControl = null;
         }
 
         private void label04_Click(object sender, EventArgs e)
         {
             respuestaSeleccionadaTemp = label04.Text;
-            botonConfirmar.Enabled = true;
-            botonConfirmar.BackColor = System.Drawing.Color.Green;
             label01.BackColor = System.Drawing.Color.Lavender;
             label02.BackColor = System.Drawing.Color.Lavender;
             label03.BackColor = System.Drawing.Color.Lavender;
             label04.BackColor = System.Drawing.Color.LightGreen;
+            this.ActiveControl = null;
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -542,14 +522,13 @@ namespace PreguntadosUASLP
             if (pictureBox != null && pictureBox.Tag != null)
             {
                 respuestaSeleccionadaTemp = pictureBox.Tag.ToString();
-                botonConfirmar.Enabled = true;
-                botonConfirmar.BackColor = System.Drawing.Color.Green;
                 pictureBox_op1.BackColor = System.Drawing.Color.Transparent;
                 pictureBox_op2.BackColor = System.Drawing.Color.Transparent;
                 pictureBox_op3.BackColor = System.Drawing.Color.Transparent;
                 pictureBox_op4.BackColor = System.Drawing.Color.Transparent;
                 pictureBox.BackColor = System.Drawing.Color.LightGreen;
             }
+            this.ActiveControl = null; // para evitar que se active al presionar Enter
         }
 
         //Método para reproducir audio usando SoundPlayer con WAV
@@ -599,14 +578,13 @@ namespace PreguntadosUASLP
             {
                 ReproducirAudio(button.Tag.ToString());
                 respuestaSeleccionadaTemp = button.Tag.ToString();
-                botonConfirmar.Enabled = true;
-                botonConfirmar.BackColor = System.Drawing.Color.Green;
                 btn_audio1.BackColor = System.Drawing.SystemColors.Control;
                 btn_audio2.BackColor = System.Drawing.SystemColors.Control;
                 btn_audio3.BackColor = System.Drawing.SystemColors.Control;
                 btn_audio4.BackColor = System.Drawing.SystemColors.Control;
                 button.BackColor = System.Drawing.Color.LightGreen;
             }
+            this.ActiveControl = null;  // quitar focus para evitar que se active al presionar Enter
         }
 
         private void label01_Click_1(object sender, EventArgs e)

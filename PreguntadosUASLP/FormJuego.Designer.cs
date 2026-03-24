@@ -271,6 +271,8 @@
             // 
             // FormJuego
             // 
+            this.KeyPreview = true;
+            this.KeyDown += FormJuego_Confirmar;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateBlue;
