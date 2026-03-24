@@ -576,12 +576,10 @@ namespace PreguntadosUASLP
             if (respuestaSeleccionada == respuestaCorrectaTexto)
             {
                 puntuacion++;
-                MessageBox.Show("Correcto!");
             }
             else
             {
                 preguntasFalladas++;
-                MessageBox.Show("Incorrecto!");
             }
             GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
