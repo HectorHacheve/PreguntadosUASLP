@@ -420,7 +420,8 @@ namespace PreguntadosUASLP
                 if (File.Exists(rutaCompleta))
                 {
                     pictureBox.Image = Image.FromFile(rutaCompleta);
-                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    //pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 else
                 {
