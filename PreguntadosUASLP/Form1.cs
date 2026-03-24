@@ -28,15 +28,15 @@ namespace PreguntadosUASLP
             e.Graphics.DrawString(textoBoton, miFuente, Brushes.White, botonActual.ClientRectangle, formatoCentrado);
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void Futbol_Click(object sender, EventArgs e)
         {
             FormJuego juego = new FormJuego(6);
             juego.ShowDialog();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Cultura_pop_Click(object sender, EventArgs e)

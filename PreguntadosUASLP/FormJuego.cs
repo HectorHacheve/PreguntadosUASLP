@@ -172,7 +172,7 @@ namespace PreguntadosUASLP
         private void pb_puntaje_Paint(object sender, PaintEventArgs e)
         {
             string texto = "Puntaje:  ✅ " + puntuacion + "  |  " + " ❌ " + preguntasFalladas;
-            Font fuente = new Font("Impact", 13, FontStyle.Regular);
+            Font fuente = new Font("Impact", 14, FontStyle.Regular);
             StringFormat formato = new StringFormat();
             formato.Alignment = StringAlignment.Center;
             formato.LineAlignment = StringAlignment.Center;
