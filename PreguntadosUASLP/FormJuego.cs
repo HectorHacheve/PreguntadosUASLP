@@ -1,16 +1,17 @@
 ﻿#nullable disable
+using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=irazema05;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;";
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -466,7 +467,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -642,7 +643,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio))
                 };
 
                 foreach (string ruta in posiblesRutas)
