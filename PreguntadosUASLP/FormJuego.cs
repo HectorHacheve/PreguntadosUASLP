@@ -118,6 +118,13 @@ namespace PreguntadosUASLP
             StringFormat sf = new StringFormat();
             sf.Alignment = StringAlignment.Center;
             sf.LineAlignment = StringAlignment.Center;
+
+            using (SolidBrush sombra = new SolidBrush(Color.FromArgb(150, Color.Black)))
+            {
+                RectangleF rectSombra = new RectangleF(1.5f, 1.5f, pb.Width, pb.Height);
+                g.DrawString(texto, fuente, sombra, rectSombra, sf);
+            }
+
             g.DrawString(texto, fuente, Brushes.White, pb.ClientRectangle, sf);
         }
         private void AjustarPregunta(string texto)
