@@ -21,6 +21,7 @@ namespace PreguntadosUASLP
         int preguntasRespondidas = 0;
         int preguntasFalladas = 0;
         int totalPreguntas = 12;
+        int idPartidaActual = 0;
         List<int> preguntasUsadas = new List<int>();
         string respuestaSeleccionadaTemp = "";
         ////Variable para controlar la reproducción de audio y poder detenerlo
@@ -81,6 +82,8 @@ namespace PreguntadosUASLP
             ActualizarNumeroPregunta();
             ImagenCategoria();
             CargarSiguientePregunta();
+
+            CrearPartida();
         }
 
         private void ActualizarNumeroPregunta()
@@ -298,8 +301,10 @@ namespace PreguntadosUASLP
 
             if (preguntasRespondidas >= totalPreguntas)
             {
+                ActualizarPartidaFinal();
                 MostrarPantallaFinal();
                 return;
+
             }
 
             if (preguntasUsadas.Count >= totalBD)
@@ -506,9 +511,9 @@ namespace PreguntadosUASLP
             btn_audio3.BackColor = System.Drawing.Color.Transparent;
             btn_audio4.BackColor = System.Drawing.Color.Transparent;
 
-            pb_op01.Visible = false; 
+            pb_op01.Visible = false;
             pb_op02.Visible = false;
-            pb_op03.Visible = false; 
+            pb_op03.Visible = false;
             pb_op04.Visible = false;
             btn_audio1.Visible = false;
             btn_audio2.Visible = false;
@@ -566,6 +571,7 @@ namespace PreguntadosUASLP
 
         private void VerificarRespuestaSeleccionada(string respuestaSeleccionada)
         {
+
             if (respuestaSeleccionada == respuestaCorrectaTexto)
             {
                 puntuacion++;
@@ -576,6 +582,7 @@ namespace PreguntadosUASLP
                 preguntasFalladas++;
                 MessageBox.Show("Incorrecto!");
             }
+            GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
             preguntasRespondidas++;
             pb_placeholder3.Invalidate();
@@ -712,6 +719,84 @@ namespace PreguntadosUASLP
         private void btn_audio4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CrearPartida()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"INSERT INTO partidas 
+                    (fecha, id_categoria, preguntas_correctas, preguntas_incorrectas) 
+                    VALUES (NOW(), @cat, 0, 0);
+                    SELECT LAST_INSERT_ID();";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@cat", categoriaId);
+
+                    idPartidaActual = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al crear partida: " + ex.Message);
+                }
+            }
+        }
+
+        private void GuardarRespuestaPartida(bool correcta)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"INSERT INTO respuestas_partida 
+                    (id_partida, id_pregunta, correcta)
+                    VALUES (@partida, @pregunta, @correcta)";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@partida", idPartidaActual);
+                    cmd.Parameters.AddWithValue("@pregunta", idPreguntaActual);
+                    cmd.Parameters.AddWithValue("@correcta", correcta);
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar respuesta: " + ex.Message);
+                }
+            }
+        }
+
+        private void ActualizarPartidaFinal()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE partidas 
+                    SET preguntas_correctas = @correctas,
+                        preguntas_incorrectas = @incorrectas
+                    WHERE id_partida = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@correctas", puntuacion);
+                    cmd.Parameters.AddWithValue("@incorrectas", preguntasFalladas);
+                    cmd.Parameters.AddWithValue("@id", idPartidaActual);
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar partida: " + ex.Message);
+                }
+            }
         }
     }
 }
