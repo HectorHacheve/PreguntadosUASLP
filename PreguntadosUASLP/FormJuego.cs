@@ -40,11 +40,6 @@ namespace PreguntadosUASLP
             btn_audio3.Click += btn_audio_Click;
             btn_audio4.Click += btn_audio_Click;
 
-            label_pregunta.AutoSize = false;
-            label_pregunta.Size = new System.Drawing.Size(901, 108);
-            label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
-            label_pregunta.Location = new System.Drawing.Point(134, 115);
-
             //Crear boton de confirmar y ajustar posición más abajo
             botonConfirmar = new Button();
             botonConfirmar.Text = "Confirmar respuesta";
@@ -81,7 +76,6 @@ namespace PreguntadosUASLP
         {
             label_placeholder1.Text = ObtenerNombreCategoria();
             label_placeholder3.Text = "Puntaje: 0";
-            label_pregunta.Left = (this.ClientSize.Width - label_pregunta.Width) / 2;
             ActualizarNumeroPregunta();
             ImagenCategoria();
             CargarSiguientePregunta();
@@ -113,6 +107,14 @@ namespace PreguntadosUASLP
             }
         }
 
+        private void AjustarFuentePregunta(string texto)
+        {
+            int espacioDisponible = this.ClientSize.Width - 100; // 100 = donde termina el PictureBox
+            label_pregunta.Left = 100 + (espacioDisponible - label_pregunta.Width) / 2;
+            int areaTop = 50;
+            int areaBottom = 260;
+            label_pregunta.Top = areaTop + (areaBottom - areaTop - label_pregunta.Height) / 2;
+        }
         private void ImagenCategoria()
         {
             if (categoria == "UASLP")
@@ -238,6 +240,8 @@ namespace PreguntadosUASLP
                         preguntasUsadas.Add(idPreguntaActual);
 
                         label_pregunta.Text = reader["pregunta"] != null ? reader["pregunta"].ToString() : "";
+                        AjustarFuentePregunta(label_pregunta.Text);
+
                         string tipoPregunta = reader["tipo"] != null ? reader["tipo"].ToString() : "texto";
 
                         reader.Close();

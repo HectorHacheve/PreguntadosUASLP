@@ -61,7 +61,7 @@
             label_pregunta.BackColor = Color.Transparent;
             label_pregunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_pregunta.ForeColor = Color.White;
-            label_pregunta.Location = new Point(260, 70);
+            label_pregunta.Location = new Point(260, 80);
             label_pregunta.MaximumSize = new Size(700, 0);
             label_pregunta.Name = "label_pregunta";
             label_pregunta.TabIndex = 0;
