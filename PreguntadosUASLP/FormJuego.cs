@@ -81,6 +81,7 @@ namespace PreguntadosUASLP
         {
             label_placeholder1.Text = ObtenerNombreCategoria();
             label_placeholder3.Text = "Puntaje: 0";
+            label_pregunta.Left = (this.ClientSize.Width - label_pregunta.Width) / 2;
             ActualizarNumeroPregunta();
             ImagenCategoria();
             CargarSiguientePregunta();

@@ -57,12 +57,14 @@
             // 
             // label_pregunta
             // 
+            label_pregunta.AutoSize = true;
             label_pregunta.BackColor = Color.Transparent;
             label_pregunta.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_pregunta.ForeColor = Color.Transparent;
-            label_pregunta.Location = new Point(287, 79);
+            label_pregunta.ForeColor = Color.White;
+            label_pregunta.Location = new Point(282, 0);
+            label_pregunta.MaximumSize = new Size(700, 0);
             label_pregunta.Name = "label_pregunta";
-            label_pregunta.Size = new Size(664, 166);
+            label_pregunta.Size = new Size(272, 38);
             label_pregunta.TabIndex = 0;
             label_pregunta.Text = "(Ingresar pregunta)";
             label_pregunta.TextAlign = ContentAlignment.MiddleCenter;
@@ -278,9 +280,10 @@
             BackgroundImage = Properties.Resources.fondoMorado;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1179, 775);
+            Controls.Add(pictureBox_cat1);
+            Controls.Add(label_pregunta);
             Controls.Add(label04);
             Controls.Add(label02);
-            Controls.Add(pictureBox_cat1);
             Controls.Add(pictureBox_cat2);
             Controls.Add(label_placeholder3);
             Controls.Add(label_placeholder1);
@@ -296,7 +299,6 @@
             Controls.Add(btn_audio2);
             Controls.Add(pictureBox_op3);
             Controls.Add(pictureBox_op4);
-            Controls.Add(label_pregunta);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormJuego";
             StartPosition = FormStartPosition.CenterScreen;
