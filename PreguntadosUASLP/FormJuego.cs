@@ -128,6 +128,34 @@ namespace PreguntadosUASLP
                 pictureBox_cat2.Image = Properties.Resources.celular;
                 pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
             }
+            else if (categoria == "Cine")
+            {
+                pictureBox_cat1.Image = Properties.Resources.film;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.cinema;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else if (categoria == "Tecnologia")
+            {
+                pictureBox_cat1.Image = Properties.Resources.telefono;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.compu;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else if (categoria == "Videojuegos")
+            {
+                pictureBox_cat1.Image = Properties.Resources.control;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.gameboy;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else if (categoria == "Futbol")
+            {
+                pictureBox_cat1.Image = Properties.Resources.futbol2;
+                pictureBox_cat1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox_cat2.Image = Properties.Resources.futbol;
+                pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private int ObtenerTotalPreguntasBD()
