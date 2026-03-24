@@ -18,6 +18,7 @@ namespace PreguntadosUASLP
         string respuestaCorrectaTexto;
         int puntuacion = 0;
         int preguntasRespondidas = 0;
+        int preguntasFalladas = 0;
         int totalPreguntas = 12;
         List<int> preguntasUsadas = new List<int>();
         string respuestaSeleccionadaTemp = "";
@@ -75,7 +76,7 @@ namespace PreguntadosUASLP
         private void FormJuego_Load(object sender, EventArgs e)
         {
             label_placeholder1.Text = ObtenerNombreCategoria();
-            label_placeholder3.Text = "Puntaje: 0";
+            label_placeholder3.Invalidate();
             ActualizarNumeroPregunta();
             ImagenCategoria();
             CargarSiguientePregunta();
@@ -166,6 +167,17 @@ namespace PreguntadosUASLP
                 pictureBox_cat2.Image = Properties.Resources.pregunta;
                 pictureBox_cat2.SizeMode = PictureBoxSizeMode.Zoom;
             }
+        }
+
+        private void pb_puntaje_Paint(object sender, PaintEventArgs e)
+        {
+            string texto = "Puntaje:  ✅ " + puntuacion + "  |  " + " ❌ " + preguntasFalladas;
+            Font fuente = new Font("Impact", 13, FontStyle.Regular);
+            StringFormat formato = new StringFormat();
+            formato.Alignment = StringAlignment.Center;
+            formato.LineAlignment = StringAlignment.Center;
+            e.Graphics.DrawString(texto, fuente, Brushes.DarkSlateBlue,
+                ((PictureBox)sender).ClientRectangle, formato);
         }
 
         private int ObtenerTotalPreguntasBD()
@@ -454,11 +466,12 @@ namespace PreguntadosUASLP
             }
             else
             {
+                preguntasFalladas++;
                 MessageBox.Show("Incorrecto!");
             }
 
             preguntasRespondidas++;
-            label_placeholder3.Text = "Puntaje: " + puntuacion;
+            label_placeholder3.Invalidate();
             CargarSiguientePregunta();
         }
 
