@@ -375,10 +375,17 @@ namespace PreguntadosUASLP
                         btn_audio3.Tag = respuestas[2];
                         btn_audio4.Tag = respuestas[3];
 
-                        btn_audio1.Text = "Audio 1";
-                        btn_audio2.Text = "Audio 2";
-                        btn_audio3.Text = "Audio 3";
-                        btn_audio4.Text = "Audio 4";
+                        btn_audio1.Text = "🔊 Audio 1";
+                        btn_audio2.Text = "🔊 Audio 2";
+                        btn_audio3.Text = "🔊 Audio 3";
+                        btn_audio4.Text = "🔊 Audio 4";
+
+                        // Limpiar selección anterior
+                        pb_seleccionado = null;
+                        btn_audio1.Invalidate();
+                        btn_audio2.Invalidate();
+                        btn_audio3.Invalidate();
+                        btn_audio4.Invalidate();
                     }
                 }
             }
@@ -432,10 +439,10 @@ namespace PreguntadosUASLP
             pictureBox_op2.BackColor = System.Drawing.Color.Transparent;
             pictureBox_op3.BackColor = System.Drawing.Color.Transparent;
             pictureBox_op4.BackColor = System.Drawing.Color.Transparent;
-            btn_audio1.BackColor = System.Drawing.SystemColors.Control;
-            btn_audio2.BackColor = System.Drawing.SystemColors.Control;
-            btn_audio3.BackColor = System.Drawing.SystemColors.Control;
-            btn_audio4.BackColor = System.Drawing.SystemColors.Control;
+            btn_audio1.BackColor = System.Drawing.Color.Transparent;
+            btn_audio2.BackColor = System.Drawing.Color.Transparent;
+            btn_audio3.BackColor = System.Drawing.Color.Transparent;
+            btn_audio4.BackColor = System.Drawing.Color.Transparent;
 
             pb_op01.Visible = false; 
             pb_op02.Visible = false;
@@ -581,18 +588,26 @@ namespace PreguntadosUASLP
 
         private void btn_audio_Click(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null && button.Tag != null)
+            PictureBox pb = sender as PictureBox;
+            if (pb != null && pb.Tag != null)
             {
-                ReproducirAudio(button.Tag.ToString());
-                respuestaSeleccionadaTemp = button.Tag.ToString();
-                btn_audio1.BackColor = System.Drawing.SystemColors.Control;
-                btn_audio2.BackColor = System.Drawing.SystemColors.Control;
-                btn_audio3.BackColor = System.Drawing.SystemColors.Control;
-                btn_audio4.BackColor = System.Drawing.SystemColors.Control;
-                button.BackColor = System.Drawing.Color.LightGreen;
+                ReproducirAudio(pb.Tag.ToString());
+                respuestaSeleccionadaTemp = pb.Tag.ToString();
+
+                // Quitar selección de todos
+                btn_audio1.Text = "Audio 1";
+                btn_audio2.Text = "Audio 2";
+                btn_audio3.Text = "Audio 3";
+                btn_audio4.Text = "Audio 4";
+
+                // Marcar el seleccionado reutilizando pb_seleccionado
+                pb_seleccionado = pb;
+                btn_audio1.Invalidate();
+                btn_audio2.Invalidate();
+                btn_audio3.Invalidate();
+                btn_audio4.Invalidate();
             }
-            this.ActiveControl = null;  // quitar focus para evitar que se active al presionar Enter
+            this.ActiveControl = null; // quitar focus para evitar que se active al presionar Enter
         }
 
         private void label01_Click_1(object sender, EventArgs e)

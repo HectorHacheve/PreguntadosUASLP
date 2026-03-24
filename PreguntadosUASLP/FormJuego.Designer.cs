@@ -31,10 +31,16 @@
             label_pregunta = new Label();
             label_placeholder2 = new Label();
             label_placeholder1 = new Label();
-            btn_audio1 = new Button();
-            btn_audio2 = new Button();
-            btn_audio4 = new Button();
-            btn_audio3 = new Button();
+            btn_audio1 = new PictureBox();
+            btn_audio2 = new PictureBox();
+            btn_audio3 = new PictureBox();
+            btn_audio4 = new PictureBox();
+
+            ((System.ComponentModel.ISupportInitialize)btn_audio1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio4).BeginInit();
+
             pb_placeholder3 = new PictureBox();
             pictureBox_op1 = new PictureBox();
             pictureBox_op2 = new PictureBox();
@@ -100,52 +106,53 @@
             // 
             // btn_audio1
             // 
-            btn_audio1.BackColor = Color.Lavender;
-            btn_audio1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio1.Location = new Point(243, 283);
             btn_audio1.Name = "btn_audio1";
             btn_audio1.Size = new Size(363, 119);
             btn_audio1.TabIndex = 5;
-            btn_audio1.Text = "btn_audio1";
-            btn_audio1.UseVisualStyleBackColor = false;
+            btn_audio1.TabStop = false;
+            btn_audio1.Tag = "";
+            btn_audio1.Paint += pb_opcion_Paint;
             btn_audio1.Click += btn_audio_Click;
             // 
             // btn_audio2
             // 
-            btn_audio2.AutoSize = true;
-            btn_audio2.BackColor = Color.Lavender;
-            btn_audio2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio2.Location = new Point(623, 283);
             btn_audio2.Name = "btn_audio2";
             btn_audio2.Size = new Size(363, 119);
             btn_audio2.TabIndex = 6;
-            btn_audio2.Text = "btn_audio2";
-            btn_audio2.UseVisualStyleBackColor = false;
+            btn_audio2.TabStop = false;
+            btn_audio2.Tag = "";
+            btn_audio2.Paint += pb_opcion_Paint;
             btn_audio2.Click += btn_audio_Click;
-            // 
-            // btn_audio4
-            // 
-            btn_audio4.BackColor = Color.Lavender;
-            btn_audio4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            btn_audio4.Location = new Point(623, 424);
-            btn_audio4.Name = "btn_audio4";
-            btn_audio4.Size = new Size(363, 119);
-            btn_audio4.TabIndex = 7;
-            btn_audio4.Text = "btn_audio4";
-            btn_audio4.UseVisualStyleBackColor = false;
-            btn_audio4.Click += btn_audio_Click;
             // 
             // btn_audio3
             // 
-            btn_audio3.BackColor = Color.Lavender;
-            btn_audio3.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btn_audio3.Location = new Point(243, 424);
             btn_audio3.Name = "btn_audio3";
             btn_audio3.Size = new Size(363, 119);
             btn_audio3.TabIndex = 8;
-            btn_audio3.Text = "btn_audio3";
-            btn_audio3.UseVisualStyleBackColor = false;
+            btn_audio3.TabStop = false;
+            btn_audio3.Tag = "";
+            btn_audio3.Paint += pb_opcion_Paint;
             btn_audio3.Click += btn_audio_Click;
+            //
+            // btn_audio4
+            // 
+            btn_audio4.Location = new Point(623, 424);
+            btn_audio4.Name = "btn_audio4";
+            btn_audio4.Size = new Size(363, 119);
+            btn_audio4.TabIndex = 7;
+            btn_audio4.TabStop = false;
+            btn_audio4.Tag = "";
+            btn_audio4.Paint += pb_opcion_Paint;
+            btn_audio4.Click += btn_audio_Click;
+
+            ((System.ComponentModel.ISupportInitialize)btn_audio1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_audio4).EndInit();
+
             // 
             // pb_placeholder3
             // 
@@ -330,10 +337,10 @@
         private PictureBox pb_op02;
         private PictureBox pb_op03;
         private PictureBox pb_op04;
-        private Button btn_audio1;
-        private Button btn_audio2;
-        private Button btn_audio4;
-        private Button btn_audio3;
+        private PictureBox btn_audio1;
+        private PictureBox btn_audio2;
+        private PictureBox btn_audio4;
+        private PictureBox btn_audio3;
         private PictureBox pictureBox_op1;
         private PictureBox pictureBox_op2;
         private PictureBox pictureBox_op3;
