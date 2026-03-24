@@ -74,5 +74,6 @@ namespace PreguntadosUASLP
             FormJuego juego = new FormJuego(5);
             juego.ShowDialog();
         }
+
     }
 }

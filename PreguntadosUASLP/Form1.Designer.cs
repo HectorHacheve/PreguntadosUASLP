@@ -30,9 +30,9 @@
             ((System.ComponentModel.ISupportInitialize)Redes_Sociales).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Cultura_pop).BeginInit();
             SuspendLayout();
-
+            // 
             // UASLP
-            
+            // 
             UASLP.BackColor = Color.Transparent;
             UASLP.BackgroundImage = Properties.Resources.opciones;
             UASLP.BackgroundImageLayout = ImageLayout.Stretch;
@@ -45,9 +45,9 @@
             UASLP.Tag = "UASLP";
             UASLP.Click += UASLP_Click;
             UASLP.Paint += Cultura_pop_Paint;
-            
+            // 
             // Cine
-            
+            // 
             Cine.BackColor = Color.Transparent;
             Cine.BackgroundImage = Properties.Resources.opciones;
             Cine.BackgroundImageLayout = ImageLayout.Stretch;
@@ -60,9 +60,9 @@
             Cine.Tag = "Cine";
             Cine.Click += Cine_Click;
             Cine.Paint += Cultura_pop_Paint;
-            
+            // 
             // Videojuegos
-            
+            // 
             Videojuegos.BackColor = Color.Transparent;
             Videojuegos.BackgroundImage = Properties.Resources.opciones;
             Videojuegos.BackgroundImageLayout = ImageLayout.Stretch;
@@ -73,10 +73,11 @@
             Videojuegos.TabIndex = 2;
             Videojuegos.TabStop = false;
             Videojuegos.Tag = "Videojuegos";
+            Videojuegos.Click += Videojuegos_Click;
             Videojuegos.Paint += Cultura_pop_Paint;
-            
+            // 
             // Futbol
-            
+            // 
             Futbol.BackColor = Color.Transparent;
             Futbol.BackgroundImage = Properties.Resources.opciones;
             Futbol.BackgroundImageLayout = ImageLayout.Stretch;
@@ -89,9 +90,9 @@
             Futbol.Tag = "Futbol";
             Futbol.Click += Futbol_Click;
             Futbol.Paint += Cultura_pop_Paint;
-            
+            // 
             // Tecnologia
-            
+            // 
             Tecnologia.BackColor = Color.Transparent;
             Tecnologia.BackgroundImage = Properties.Resources.opciones;
             Tecnologia.BackgroundImageLayout = ImageLayout.Stretch;
@@ -104,9 +105,9 @@
             Tecnologia.Tag = "Tecnología";
             Tecnologia.Click += Tecnologia_Click;
             Tecnologia.Paint += Cultura_pop_Paint;
-            
+            // 
             // Redes_Sociales
-            
+            // 
             Redes_Sociales.BackColor = Color.Transparent;
             Redes_Sociales.BackgroundImage = Properties.Resources.opciones;
             Redes_Sociales.BackgroundImageLayout = ImageLayout.Stretch;
@@ -119,9 +120,9 @@
             Redes_Sociales.Tag = "Redes sociales";
             Redes_Sociales.Click += Redes_Sociales_Click;
             Redes_Sociales.Paint += Cultura_pop_Paint;
-            
+            // 
             // Cultura_pop
-            
+            // 
             Cultura_pop.BackColor = Color.Transparent;
             Cultura_pop.BackgroundImage = Properties.Resources.opciones;
             Cultura_pop.BackgroundImageLayout = ImageLayout.Stretch;
@@ -134,9 +135,9 @@
             Cultura_pop.Tag = "Cultura pop";
             Cultura_pop.Click += Cultura_pop_Click;
             Cultura_pop.Paint += Cultura_pop_Paint;
-            
+            // 
             // Form1
-            
+            // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateBlue;
