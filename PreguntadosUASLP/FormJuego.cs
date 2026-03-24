@@ -10,13 +10,14 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=irazema05;";
         int categoriaId;
         string categoria;
         int idPreguntaActual;
         int respuestaCorrectaId;
         string respuestaCorrectaTexto;
         int puntuacion = 0;
+        int puntajeMinimoAprobar = 7;
         int preguntasRespondidas = 0;
         int preguntasFalladas = 0;
         int totalPreguntas = 12;
@@ -36,6 +37,19 @@ namespace PreguntadosUASLP
             btn_audio2.Click += btn_audio_Click;
             btn_audio3.Click += btn_audio_Click;
             btn_audio4.Click += btn_audio_Click;
+
+            this.KeyPreview = true;
+            this.KeyDown += FormJuego_KeyDown;
+        }
+
+        private void FormJuego_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !string.IsNullOrEmpty(respuestaSeleccionadaTemp))
+            {
+                DetenerAudio();
+                VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
+                respuestaSeleccionadaTemp = "";
+            }
         }
 
         //Detener audio al cerrar el formulario
@@ -227,6 +241,7 @@ namespace PreguntadosUASLP
             }
         }
 
+
         private void CargarSiguientePregunta()
         {
             //Detener audio al cambiar de pregunta
@@ -243,14 +258,20 @@ namespace PreguntadosUASLP
 
             if (preguntasRespondidas >= totalPreguntas)
             {
-                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + totalPreguntas);
-                this.Close();
+                MostrarPantallaFinal();
                 return;
             }
 
             if (preguntasUsadas.Count >= totalBD)
             {
                 MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + preguntasRespondidas);
+                this.Close();
+                return;
+            }
+
+            if (preguntasRespondidas >= totalPreguntas)
+            {
+                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + totalPreguntas);
                 this.Close();
                 return;
             }
@@ -405,7 +426,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen))
+                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -478,6 +499,28 @@ namespace PreguntadosUASLP
                 btn_audio2.Visible = true;
                 btn_audio3.Visible = true;
                 btn_audio4.Visible = true;
+            }
+        }
+
+        private void MostrarPantallaFinal()
+        {
+            FormFinal pantallaFinal = new FormFinal(puntuacion, totalPreguntas, preguntasFalladas, puntajeMinimoAprobar);
+            DialogResult resultado = pantallaFinal.ShowDialog();
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Reiniciar juego
+                puntuacion = 0;
+                preguntasRespondidas = 0;
+                preguntasFalladas = 0;
+                preguntasUsadas.Clear();
+                respuestaSeleccionadaTemp = "";
+                pb_placeholder3.Invalidate();
+                CargarSiguientePregunta();
+            }
+            else
+            {
+                this.Close();
             }
         }
 
@@ -559,7 +602,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio))
+                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
                 };
 
                 foreach (string ruta in posiblesRutas)
