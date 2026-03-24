@@ -15,6 +15,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=HV2004HE;";
         string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;"; // agregar password
         int categoriaId;
         string categoria;
@@ -477,6 +478,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
+                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
                     Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
                 };
@@ -660,6 +662,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
+                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
                     Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio)),
                     Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
                 };
