@@ -15,7 +15,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;"; // agregar password
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=TU_CONTRASEÑA;"; // agregar password
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -214,10 +214,6 @@ namespace PreguntadosUASLP
                     VerificarRespuestaSeleccionada(respuestaSeleccionadaTemp);
                     respuestaSeleccionadaTemp = "";
                 }
-                else
-                {
-                    MessageBox.Show("Selecciona una respuesta primero");
-                }
             }
         }
         private void pb_puntaje_Paint(object sender, PaintEventArgs e)
@@ -299,7 +295,6 @@ namespace PreguntadosUASLP
 
             if (totalBD == 0)
             {
-                MessageBox.Show("No hay preguntas en esta categoría");
                 this.Close();
                 return;
             }
@@ -314,14 +309,12 @@ namespace PreguntadosUASLP
 
             if (preguntasUsadas.Count >= totalBD)
             {
-                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + preguntasRespondidas);
                 this.Close();
                 return;
             }
 
             if (preguntasRespondidas >= totalPreguntas)
             {
-                MessageBox.Show("Fin del juego. Puntaje: " + puntuacion + "/" + totalPreguntas);
                 this.Close();
                 return;
             }
@@ -367,13 +360,11 @@ namespace PreguntadosUASLP
                     }
                     else
                     {
-                        MessageBox.Show("No hay más preguntas disponibles");
                         this.Close();
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error BD: " + ex.Message);
                 }
             }
         }
@@ -462,7 +453,6 @@ namespace PreguntadosUASLP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error respuestas: " + ex.Message);
             }
         }
 
@@ -476,7 +466,8 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen)) // Cambiar ruta
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen)),
+                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -654,7 +645,8 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio)) // Cambiar ruta
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio)),
+                    Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -673,12 +665,10 @@ namespace PreguntadosUASLP
                 }
                 else
                 {
-                    MessageBox.Show("No se encuentra el audio: " + rutaAudio);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al reproducir audio: " + ex.Message);
             }
         }
 
@@ -746,7 +736,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al crear partida: " + ex.Message);
                 }
             }
         }
@@ -772,7 +761,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al guardar respuesta: " + ex.Message);
                 }
             }
         }
@@ -799,7 +787,6 @@ namespace PreguntadosUASLP
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al actualizar partida: " + ex.Message);
                 }
             }
         }
