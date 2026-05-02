@@ -28,20 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
+            txt_nombre = new TextBox();
+            btn_unirse = new Button();
+            list_jugadores = new ListBox();
+            lbl_estado = new Label();
+            btn_listo = new Button();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
+            // 
+            // txt_nombre
+            // 
+            txt_nombre.Location = new Point(350, 179);
+            txt_nombre.Name = "txt_nombre";
+            txt_nombre.Size = new Size(344, 27);
+            txt_nombre.TabIndex = 1;
+            // 
+            // btn_unirse
+            // 
+            btn_unirse.Location = new Point(700, 176);
+            btn_unirse.Name = "btn_unirse";
+            btn_unirse.Size = new Size(150, 33);
+            btn_unirse.TabIndex = 2;
+            btn_unirse.Text = "UNIRSE";
+            btn_unirse.UseVisualStyleBackColor = true;
+            // 
+            // list_jugadores
+            // 
+            list_jugadores.FormattingEnabled = true;
+            list_jugadores.Location = new Point(350, 275);
+            list_jugadores.Name = "list_jugadores";
+            list_jugadores.Size = new Size(500, 324);
+            list_jugadores.TabIndex = 3;
+            list_jugadores.SelectedIndexChanged += list_jugadores_SelectedIndexChanged;
+            // 
+            // lbl_estado
+            // 
+            lbl_estado.Location = new Point(350, 230);
+            lbl_estado.Name = "lbl_estado";
+            lbl_estado.Size = new Size(500, 30);
+            lbl_estado.TabIndex = 4;
+            lbl_estado.Text = "Ingresa tu nombre y dale click a UNIRSE";
+            lbl_estado.Click += label1_Click_1;
+            // 
+            // btn_listo
+            // 
+            btn_listo.Location = new Point(350, 618);
+            btn_listo.Name = "btn_listo";
+            btn_listo.Size = new Size(500, 70);
+            btn_listo.TabIndex = 5;
+            btn_listo.Text = "Estoy listo";
+            btn_listo.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.titulo;
+            pictureBox1.Location = new Point(303, 92);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(629, 63);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.BackgroundImage = Properties.Resources.logo;
+            pictureBox2.Location = new Point(12, 61);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(267, 246);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 7;
+            pictureBox2.TabStop = false;
             // 
             // FormLobby
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkSlateBlue;
             BackgroundImage = Properties.Resources.fondoMorado;
-            ClientSize = new Size(800, 450);
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1179, 775);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
+            Controls.Add(btn_listo);
+            Controls.Add(lbl_estado);
+            Controls.Add(list_jugadores);
+            Controls.Add(btn_unirse);
+            Controls.Add(txt_nombre);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
             Name = "FormLobby";
-            Text = "FormLobby";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Preguntados UASLP";
             Load += FormLobby_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+        private TextBox txt_nombre;
+        private Button btn_unirse;
+        private ListBox list_jugadores;
+        private Label lbl_estado;
+        private Button btn_listo;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }
