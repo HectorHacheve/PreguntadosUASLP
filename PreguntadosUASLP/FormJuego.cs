@@ -1,4 +1,8 @@
-﻿#nullable disable
+﻿/*
+IMPORTANTE: Cambiar ruta en líneas 477 y 655, Cambiar contraseña de BD en línea 17
+*/
+
+#nullable disable
 using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
 using System;
@@ -11,7 +15,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;"; // agregar password
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -472,7 +476,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen)) // Cambiar ruta
                 };
 
                 foreach (string ruta in posiblesRutas)
@@ -576,10 +580,12 @@ namespace PreguntadosUASLP
             if (respuestaSeleccionada == respuestaCorrectaTexto)
             {
                 puntuacion++;
+                //MessageBox.Show("Correcto!");
             }
             else
             {
                 preguntasFalladas++;
+                //MessageBox.Show("Incorrecto!");
             }
             GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
@@ -648,7 +654,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio))
+                    Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio)) // Cambiar ruta
                 };
 
                 foreach (string ruta in posiblesRutas)
