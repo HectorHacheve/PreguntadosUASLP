@@ -35,8 +35,10 @@
             btn_listo = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // txt_nombre
@@ -104,6 +106,18 @@
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.Transparent;
+            pictureBox3.BackgroundImage = Properties.Resources.trophy;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox3.Location = new Point(783, 398);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(467, 326);
+            pictureBox3.TabIndex = 8;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
+            // 
             // FormLobby
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -119,6 +133,7 @@
             Controls.Add(list_jugadores);
             Controls.Add(btn_unirse);
             Controls.Add(txt_nombre);
+            Controls.Add(pictureBox3);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             KeyPreview = true;
             Name = "FormLobby";
@@ -127,6 +142,7 @@
             Load += FormLobby_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -139,5 +155,6 @@
         private Button btn_listo;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }
