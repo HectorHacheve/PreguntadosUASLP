@@ -36,53 +36,70 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // txt_nombre
             // 
-            txt_nombre.Location = new Point(350, 179);
+            txt_nombre.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_nombre.Location = new Point(350, 216);
             txt_nombre.Name = "txt_nombre";
             txt_nombre.Size = new Size(344, 27);
             txt_nombre.TabIndex = 1;
+            txt_nombre.TextChanged += txt_nombre_TextChanged;
             // 
             // btn_unirse
             // 
-            btn_unirse.Location = new Point(700, 176);
+            btn_unirse.BackColor = Color.SlateBlue;
+            btn_unirse.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_unirse.ForeColor = Color.White;
+            btn_unirse.Location = new Point(700, 212);
             btn_unirse.Name = "btn_unirse";
             btn_unirse.Size = new Size(150, 33);
             btn_unirse.TabIndex = 2;
             btn_unirse.Text = "UNIRSE";
-            btn_unirse.UseVisualStyleBackColor = true;
+            btn_unirse.UseVisualStyleBackColor = false;
             // 
             // list_jugadores
             // 
+            list_jugadores.BorderStyle = BorderStyle.None;
+            list_jugadores.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            list_jugadores.ForeColor = Color.Indigo;
             list_jugadores.FormattingEnabled = true;
-            list_jugadores.Location = new Point(350, 275);
+            list_jugadores.Location = new Point(350, 264);
             list_jugadores.Name = "list_jugadores";
-            list_jugadores.Size = new Size(500, 324);
+            list_jugadores.Size = new Size(500, 322);
             list_jugadores.TabIndex = 3;
             list_jugadores.SelectedIndexChanged += list_jugadores_SelectedIndexChanged;
             // 
             // lbl_estado
             // 
-            lbl_estado.Location = new Point(350, 230);
+            lbl_estado.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_estado.ForeColor = Color.White;
+            lbl_estado.Location = new Point(350, 168);
             lbl_estado.Name = "lbl_estado";
             lbl_estado.Size = new Size(500, 30);
             lbl_estado.TabIndex = 4;
             lbl_estado.Text = "Ingresa tu nombre y dale click a UNIRSE";
+            lbl_estado.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_estado.UseMnemonic = false;
             lbl_estado.Click += label1_Click_1;
             // 
             // btn_listo
             // 
+            btn_listo.BackColor = Color.SlateBlue;
+            btn_listo.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_listo.ForeColor = Color.White;
             btn_listo.Location = new Point(350, 618);
             btn_listo.Name = "btn_listo";
             btn_listo.Size = new Size(500, 70);
             btn_listo.TabIndex = 5;
-            btn_listo.Text = "Estoy listo";
-            btn_listo.UseVisualStyleBackColor = true;
+            btn_listo.Text = "INICIAR JUEGO";
+            btn_listo.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
@@ -118,6 +135,17 @@
             pictureBox3.TabStop = false;
             pictureBox3.Click += pictureBox3_Click;
             // 
+            // pictureBox4
+            // 
+            pictureBox4.BackColor = Color.Transparent;
+            pictureBox4.BackgroundImage = Properties.Resources.celebrate;
+            pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox4.Location = new Point(-2, 398);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(315, 347);
+            pictureBox4.TabIndex = 9;
+            pictureBox4.TabStop = false;
+            // 
             // FormLobby
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -134,6 +162,7 @@
             Controls.Add(btn_unirse);
             Controls.Add(txt_nombre);
             Controls.Add(pictureBox3);
+            Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             KeyPreview = true;
             Name = "FormLobby";
@@ -143,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,5 +186,6 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
     }
 }
