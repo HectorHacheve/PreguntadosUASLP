@@ -44,13 +44,14 @@ namespace PreguntadosUASLP
         {
             if (e.KeyCode == Keys.Space)
             {
-                this.DialogResult = DialogResult.Yes;
+                this.DialogResult = DialogResult.No;
                 this.Close();
+                FormLobby lobby = new FormLobby();
+                lobby.Show();
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                this.DialogResult = DialogResult.No;
-                this.Close();
+                Application.Exit();
             }
         }
 
@@ -65,6 +66,11 @@ namespace PreguntadosUASLP
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblInstrucciones_Click(object sender, EventArgs e)
         {
 
         }
