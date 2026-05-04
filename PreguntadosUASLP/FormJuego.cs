@@ -34,6 +34,9 @@ namespace PreguntadosUASLP
         Image imgBoton = Properties.Resources.newBtn;
         PictureBox pb_seleccionado = null;
 
+        string nombreJugador = ""; //nombre del FormLobby
+        //AQUI PUEDE IR EL SOCKEEEEET
+
         public FormJuego(int categoriaRecibida)
         {
             InitializeComponent();
@@ -46,6 +49,14 @@ namespace PreguntadosUASLP
 
             this.KeyPreview = true;
             this.KeyDown += FormJuego_KeyDown;
+        }
+
+        //llamada de func: new FormJuego(categoriaId, "NombreJugador") 
+        public FormJuego(int categoriaRecibida, string nombre) : this(categoriaRecibida)
+        {
+            nombreJugador = nombre;
+            // socketCliente.OnPreguntaRecibida += RecibirPreguntaDelServidor;
+            // socketCliente.OnPuntajesActualizados += ActualizarPuntajesOtrosJugadores;
         }
 
         private void FormJuego_KeyDown(object sender, KeyEventArgs e)
@@ -571,15 +582,19 @@ namespace PreguntadosUASLP
             if (respuestaSeleccionada == respuestaCorrectaTexto)
             {
                 puntuacion++;
-                //MessageBox.Show("Correcto!");
             }
             else
             {
                 preguntasFalladas++;
-                //MessageBox.Show("Incorrecto!");
             }
-            GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
 
+            // await socket.EnviarAsync(new {
+            //     tipo     = "respuesta",
+            //     nombre   = nombreJugador,
+            //     correcta = (respuestaSeleccionada == respuestaCorrectaTexto)
+            // });
+
+            GuardarRespuestaPartida(respuestaSeleccionada == respuestaCorrectaTexto);
             preguntasRespondidas++;
             pb_placeholder3.Invalidate();
             CargarSiguientePregunta();

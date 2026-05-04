@@ -61,7 +61,7 @@ namespace PreguntadosUASLP
             //ENVIO DEL SOCKET (AGREGAR DESPUESSSSS)!!!
             // await socketCliente.EnviarAsync(new { tipo = "listo" });
             
-            Form1 menu = new Form1(); //temporal eh
+            Form1 menu = new Form1(txt_nombre.Text.Trim()); //temporal eh
             menu.Show();
             this.Hide();
         }

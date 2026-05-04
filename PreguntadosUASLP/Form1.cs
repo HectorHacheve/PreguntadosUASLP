@@ -6,11 +6,17 @@ namespace PreguntadosUASLP
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        string nombreJugador = ""; // nombre del lobby!
+        public Form1() //modo local
         {
             InitializeComponent();
         }
 
+        public Form1(string nombre) //modo lobby
+        {
+            InitializeComponent();
+            nombreJugador = nombre;
+        }
         private void Cultura_pop_Paint(object sender, PaintEventArgs e)
         {
             PictureBox botonActual = (PictureBox)sender;
