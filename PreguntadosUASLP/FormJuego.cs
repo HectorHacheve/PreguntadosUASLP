@@ -16,7 +16,6 @@ namespace PreguntadosUASLP
     public partial class FormJuego : Form
     {
         string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=HV2004HE;";
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=Wilmington2017!;"; // agregar password
         int categoriaId;
         string categoria;
         int idPreguntaActual;
@@ -30,13 +29,11 @@ namespace PreguntadosUASLP
         int idPartidaActual = 0;
         List<int> preguntasUsadas = new List<int>();
         string respuestaSeleccionadaTemp = "";
-        ////Variable para controlar la reproducción de audio y poder detenerlo
         System.Media.SoundPlayer reproductorActual = null;
         Image imgBoton = Properties.Resources.newBtn;
         PictureBox pb_seleccionado = null;
 
-        string nombreJugador = ""; //nombre del FormLobby
-        //AQUI PUEDE IR EL SOCKEEEEET
+        string nombreJugador = ""; 
 
         public FormJuego(int categoriaRecibida)
         {
@@ -52,12 +49,10 @@ namespace PreguntadosUASLP
             this.KeyDown += FormJuego_KeyDown;
         }
 
-        //llamada de func: new FormJuego(categoriaId, "NombreJugador") 
         public FormJuego(int categoriaRecibida, string nombre) : this(categoriaRecibida)
         {
             nombreJugador = nombre;
-            // socketCliente.OnPreguntaRecibida += RecibirPreguntaDelServidor;
-            // socketCliente.OnPuntajesActualizados += ActualizarPuntajesOtrosJugadores;
+            
         }
 
         private void FormJuego_KeyDown(object sender, KeyEventArgs e)
@@ -70,14 +65,12 @@ namespace PreguntadosUASLP
             }
         }
 
-        //Detener audio al cerrar el formulario
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             DetenerAudio();
             base.OnFormClosing(e);
         }
 
-        //Método para detener el audio actual
         private void DetenerAudio()
         {
             if (reproductorActual != null)
@@ -478,7 +471,7 @@ namespace PreguntadosUASLP
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(Directory.GetCurrentDirectory(), rutaImagen),
                     Path.Combine(Directory.GetCurrentDirectory(), "imagenes", Path.GetFileName(rutaImagen)),
-                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
+                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Imagenes", Path.GetFileName(rutaImagen)),
                     Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\imagenes", Path.GetFileName(rutaImagen))
                 };
@@ -662,7 +655,7 @@ namespace PreguntadosUASLP
                 string[] posiblesRutas = {
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rutaAudio),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audios", Path.GetFileName(rutaAudio)),
-                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
+                    Path.Combine(@"C:\Users\norma\source\repos\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio)),
                     Path.Combine(@"C:\Users\nieto\PreguntadosUASLP\PreguntadosUASLP\Audios", Path.GetFileName(rutaAudio)),
                     Path.Combine(@"C:\Users\ira58\Git_Hub\Interfaces_Juego\PreguntadosUASLP\audios", Path.GetFileName(rutaAudio))
                 };
