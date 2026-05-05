@@ -15,7 +15,7 @@ namespace PreguntadosUASLP
 {
     public partial class FormJuego : Form
     {
-        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=HV2004HE;";
+        string connStr = "Server=127.0.0.1;Database=preguntados_uaslp;User ID=root;Password=irazema05;";
         int categoriaId;
         string categoria;
         int idPreguntaActual;
